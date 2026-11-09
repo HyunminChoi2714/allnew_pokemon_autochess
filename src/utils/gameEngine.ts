@@ -194,114 +194,221 @@ export function calculateSynergies(deployedPokemon: ActivePokemon[]): SynergyTie
  * Checks and fuses 3 identical Pokemon into the next evolution stage
  * Inherits highest level and combined items.
  */
-export function checkAndExecuteEvolution(
-  bench: (ActivePokemon | null)[],
-  board: BoardTile[][]
-): {
+export interface EvolutionResult {
   didEvolve: boolean;
   evolvedSpeciesName?: string;
   bench: (ActivePokemon | null)[];
   board: BoardTile[][];
-} {
-  // Collect all player pokemon with location
-  const allPokemon: { poke: ActivePokemon; loc: 'bench' | 'board'; index?: number; r?: number; c?: number }[] = [];
+  returnedItems: Item[];
+}
 
-  bench.forEach((p, idx) => {
-    if (p) allPokemon.push({ poke: p, loc: 'bench', index: idx });
-  });
+/**
+ * Checks and fuses 3 identical Pokemon (same species and star level) into the next evolution stage / star upgrade.
+ * Supports chain / cascading evolutions (e.g. 3x 1-star -> 2-star, and if that makes 3x 2-star -> 3-star).
+ * Inherits highest level, accumulated EXP, and equipped items (excess items returned to inventory).
+ */
+export function checkAndExecuteEvolution(
+  initialBench: (ActivePokemon | null)[],
+  initialBoard: BoardTile[][],
+  extraPokemon?: ActivePokemon
+): EvolutionResult {
+  let currentBench = initialBench.map((p) => (p ? { ...p } : null));
+  let currentBoard = initialBoard.map((row) => row.map((p) => (p ? { ...p } : null)));
+  let didAnyEvolve = false;
+  const evolvedNames: string[] = [];
+  const allReturnedItems: Item[] = [];
 
-  for (let r = 4; r < 8; r++) {
-    for (let c = 0; c < 7; c++) {
-      const p = board[r][c];
-      if (p && p.team === 'player') {
-        allPokemon.push({ poke: p, loc: 'board', r, c });
-      }
-    }
-  }
+  let pendingExtra = extraPokemon ? { ...extraPokemon } : null;
 
-  // Group by speciesId
-  const speciesGroups: Record<string, typeof allPokemon> = {};
-  for (const item of allPokemon) {
-    const sId = item.poke.speciesId;
-    const species = POKEMON_SPECIES[sId];
-    // Non-evolving Pokemon do not fuse (PDF: 진화가 없는 포켓몬은 3마리 이상 벤치에 있어도 합성되지 않는다)
-    if (species.evolutionStagesTotal <= 1 || !species.evolvesTo) {
-      continue;
-    }
-    // Trade evolution requires Linking Cord item unless standard 3 copies
-    // PDF: 통신교환으로 진화하는 포켓몬은 연결의끈 아이템으로만 진화 가능 (or handled via item)
-    if (species.requiresTradeItem) {
-      continue;
-    }
+  // Loop to handle cascading evolutions (e.g. 3 Charmander -> 1 Charmeleon, which triggers 3 Charmeleon -> 1 Charizard)
+  while (true) {
+    // Collect all player pokemon with location
+    const allPokemon: {
+      poke: ActivePokemon;
+      loc: 'bench' | 'board' | 'extra';
+      index?: number;
+      r?: number;
+      c?: number;
+    }[] = [];
 
-    if (!speciesGroups[sId]) speciesGroups[sId] = [];
-    speciesGroups[sId].push(item);
-  }
+    currentBench.forEach((p, idx) => {
+      if (p) allPokemon.push({ poke: p, loc: 'bench', index: idx });
+    });
 
-  // Find first group with >= 3
-  for (const [speciesId, items] of Object.entries(speciesGroups)) {
-    if (items.length >= 3) {
-      const toFuse = items.slice(0, 3);
-      const currentSpecies = POKEMON_SPECIES[speciesId];
-      const nextSpeciesId = currentSpecies.evolvesTo!;
-      const nextSpecies = POKEMON_SPECIES[nextSpeciesId];
-
-      // Find highest level among the 3
-      const maxLevel = Math.max(...toFuse.map((x) => x.poke.level));
-      const accumulatedExp = Math.max(...toFuse.map((x) => x.poke.exp));
-      // Collect items (up to 6)
-      const allItems: Item[] = [];
-      for (const item of toFuse) {
-        for (const itm of item.poke.items) {
-          if (allItems.length < 6 && !allItems.some((existing) => existing.id === itm.id)) {
-            allItems.push(itm);
-          }
+    for (let r = 4; r < 8; r++) {
+      for (let c = 0; c < 7; c++) {
+        const p = currentBoard[r][c];
+        if (p && p.team === 'player') {
+          allPokemon.push({ poke: p, loc: 'board', r, c });
         }
       }
+    }
 
-      // Target position: prefer one on board, else bench
-      const targetPlace = toFuse.find((x) => x.loc === 'board') || toFuse[0];
+    if (pendingExtra) {
+      allPokemon.push({ poke: pendingExtra, loc: 'extra' });
+    }
 
-      // Remove the other 2
-      const newBench = [...bench];
-      const newBoard = board.map((row) => [...row]);
+    // Group by speciesId AND evolutionStage (so only 3 units of the same star rank fuse!)
+    const speciesGroups: Record<string, typeof allPokemon> = {};
+    for (const item of allPokemon) {
+      const sId = item.poke.speciesId;
+      const stage = item.poke.evolutionStage || 1;
 
-      for (const item of toFuse) {
-        if (item.loc === 'bench' && item.index !== undefined) {
-          newBench[item.index] = null;
-        } else if (item.loc === 'board' && item.r !== undefined && item.c !== undefined) {
-          newBoard[item.r][item.c] = null;
-        }
+      // Units that are already 3-star (maximum rank) cannot fuse further
+      if (stage >= 3) {
+        continue;
       }
 
-      // Instantiate evolved Pokemon
-      const evolvedPoke = instantiatePokemon(
-        nextSpeciesId,
+      const groupKey = `${sId}_stage${stage}`;
+      if (!speciesGroups[groupKey]) speciesGroups[groupKey] = [];
+      speciesGroups[groupKey].push(item);
+    }
+
+    // Find first group with >= 3 candidates
+    let fuseGroupKey: string | null = null;
+    for (const [key, items] of Object.entries(speciesGroups)) {
+      if (items.length >= 3) {
+        fuseGroupKey = key;
+        break;
+      }
+    }
+
+    if (!fuseGroupKey) {
+      // No more 3-unit fusions possible
+      break;
+    }
+
+    const items = speciesGroups[fuseGroupKey];
+    const toFuse = items.slice(0, 3);
+    const samplePoke = toFuse[0].poke;
+    const currentSpecies = POKEMON_SPECIES[samplePoke.speciesId];
+
+    // If pendingExtra was used in this fusion, clear it
+    if (toFuse.some((x) => x.loc === 'extra')) {
+      pendingExtra = null;
+    }
+
+    // Determine target position for the evolved Pokemon:
+    // Prefer board position so deployed team remains on board, then bench
+    const targetPlace =
+      toFuse.find((x) => x.loc === 'board') ||
+      toFuse.find((x) => x.loc === 'bench') ||
+      toFuse[0];
+
+    // Find highest level and EXP among the 3
+    const maxLevel = Math.max(...toFuse.map((x) => x.poke.level));
+    const accumulatedExp = Math.max(...toFuse.map((x) => x.poke.exp));
+
+    // Combine all items from the 3 fusing units
+    const combinedItems: Item[] = [];
+    for (const item of toFuse) {
+      for (const itm of item.poke.items) {
+        combinedItems.push(itm);
+      }
+    }
+    const equippedItems = combinedItems.slice(0, 6);
+    const overflowItems = combinedItems.slice(6);
+    allReturnedItems.push(...overflowItems);
+
+    // Remove the fused units from bench and board
+    for (const item of toFuse) {
+      if (item.loc === 'bench' && item.index !== undefined) {
+        currentBench[item.index] = null;
+      } else if (item.loc === 'board' && item.r !== undefined && item.c !== undefined) {
+        currentBoard[item.r][item.c] = null;
+      }
+    }
+
+    let evolvedPoke: ActivePokemon;
+    let newSpeciesDisplayName = '';
+
+    // Check if species has a defined next evolution in the species database
+    const nextSpeciesId = currentSpecies?.evolvesTo;
+    const nextSpecies = nextSpeciesId ? POKEMON_SPECIES[nextSpeciesId] : null;
+
+    const targetRow = targetPlace.loc === 'board' ? (targetPlace.r ?? -1) : -1;
+    const targetCol = targetPlace.loc === 'board' ? (targetPlace.c ?? -1) : -1;
+
+    if (nextSpecies) {
+      // Case 1: Standard / Trade species evolution (e.g. Charmander -> Charmeleon -> Charizard, Gastly -> Haunter -> Gengar)
+      evolvedPoke = instantiatePokemon(
+        nextSpeciesId!,
         'player',
-        targetPlace.r ?? -1,
-        targetPlace.c ?? -1,
+        targetRow,
+        targetCol,
         maxLevel
       );
       evolvedPoke.exp = accumulatedExp;
-      evolvedPoke.items = allItems;
+      evolvedPoke.items = equippedItems;
+      newSpeciesDisplayName = nextSpecies.name;
+    } else {
+      // Case 2: Star upgrade for Pokemon with no higher species in database (e.g. Gen 2-9 starters, single-stage Pokemon)
+      const nextStage = Math.min(3, (samplePoke.evolutionStage || 1) + 1) as 1 | 2 | 3;
+      const statMultiplier = nextStage === 3 ? 1.6 : 1.4;
+      const hpMultiplier = nextStage === 3 ? 1.7 : 1.5;
 
-      // Place evolved pokemon
-      if (targetPlace.loc === 'bench' && targetPlace.index !== undefined) {
-        newBench[targetPlace.index] = evolvedPoke;
-      } else if (targetPlace.loc === 'board' && targetPlace.r !== undefined && targetPlace.c !== undefined) {
-        newBoard[targetPlace.r][targetPlace.c] = evolvedPoke;
-      }
-
-      return {
-        didEvolve: true,
-        evolvedSpeciesName: nextSpecies.name,
-        bench: newBench,
-        board: newBoard,
+      const upgradedHp = Math.round(samplePoke.maxHp * hpMultiplier);
+      evolvedPoke = {
+        ...JSON.parse(JSON.stringify(samplePoke)),
+        instanceId: `player_${samplePoke.speciesId}_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+        row: targetRow,
+        col: targetCol,
+        level: maxLevel + 2,
+        exp: accumulatedExp,
+        evolutionStage: nextStage,
+        evolutionStagesTotal: 3,
+        cost: samplePoke.cost * 2,
+        maxHp: upgradedHp,
+        currentHp: upgradedHp,
+        stats: {
+          hp: Math.round(samplePoke.stats.hp * hpMultiplier),
+          attack: Math.round(samplePoke.stats.attack * statMultiplier),
+          defense: Math.round(samplePoke.stats.defense * statMultiplier),
+          spAttack: Math.round(samplePoke.stats.spAttack * statMultiplier),
+          spDefense: Math.round(samplePoke.stats.spDefense * statMultiplier),
+          speed: samplePoke.stats.speed,
+        },
+        items: equippedItems,
       };
+      newSpeciesDisplayName = `${samplePoke.name} (★${nextStage})`;
     }
+
+    // Place the evolved pokemon
+    if (targetPlace.loc === 'board' && targetPlace.r !== undefined && targetPlace.c !== undefined) {
+      currentBoard[targetPlace.r][targetPlace.c] = evolvedPoke;
+    } else if (targetPlace.loc === 'bench' && targetPlace.index !== undefined) {
+      currentBench[targetPlace.index] = evolvedPoke;
+    } else {
+      // If target was extra, find first empty slot on bench or board
+      const emptyBench = currentBench.findIndex((slot) => slot === null);
+      if (emptyBench !== -1) {
+        currentBench[emptyBench] = evolvedPoke;
+      } else {
+        let placed = false;
+        for (let r = 4; r < 8 && !placed; r++) {
+          for (let c = 0; c < 7 && !placed; c++) {
+            if (currentBoard[r][c] === null) {
+              evolvedPoke.row = r;
+              evolvedPoke.col = c;
+              currentBoard[r][c] = evolvedPoke;
+              placed = true;
+            }
+          }
+        }
+      }
+    }
+
+    didAnyEvolve = true;
+    evolvedNames.push(newSpeciesDisplayName);
   }
 
-  return { didEvolve: false, bench, board };
+  return {
+    didEvolve: didAnyEvolve,
+    evolvedSpeciesName: evolvedNames.join(' ➡️ '),
+    bench: currentBench,
+    board: currentBoard,
+    returnedItems: allReturnedItems,
+  };
 }
 
 /**

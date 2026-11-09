@@ -177,8 +177,16 @@ export default function App() {
       addLog('골드가 부족합니다!', 'system');
       return;
     }
+
     const emptyBenchIndex = bench.findIndex((slot) => slot === null);
-    if (emptyBenchIndex === -1) {
+
+    // Check if buying this Pokemon will immediately trigger a 3-unit fusion
+    const matchingCount = [...bench, ...board.flat()].filter(
+      (p) => p && p.team === 'player' && p.speciesId === species.id && (p.evolutionStage || 1) === 1
+    ).length;
+    const canFuseOnBuy = matchingCount >= 2;
+
+    if (emptyBenchIndex === -1 && !canFuseOnBuy) {
       addLog('벤치가 가득 찼습니다! (최대 9칸)', 'system');
       return;
     }
@@ -191,22 +199,41 @@ export default function App() {
     newShop[shopIndex] = null;
     setShopItems(newShop);
 
-    // Create Pokemon instance on bench
+    // Create Pokemon instance
     const newPoke = instantiatePokemon(species.id, 'player', -1, -1, 1);
-    const newBench = [...bench];
-    newBench[emptyBenchIndex] = newPoke;
-
     addLog(`[${species.name}]을(를) ${species.cost}원에 영입했습니다.`, 'system');
 
-    // Evolution check!
-    const evoResult = checkAndExecuteEvolution(newBench, board);
-    if (evoResult.didEvolve) {
-      confetti({ particleCount: 80, spread: 60, origin: { y: 0.7 } });
-      addLog(`✨ 3마리 융합 완료! [${evoResult.evolvedSpeciesName}]으로 진화했습니다!`, 'level');
-      setBench(evoResult.bench);
-      setBoard(evoResult.board);
+    if (emptyBenchIndex === -1 && canFuseOnBuy) {
+      // Bench is full, but fusing immediately frees up space!
+      const evoResult = checkAndExecuteEvolution(bench, board, newPoke);
+      if (evoResult.didEvolve) {
+        confetti({ particleCount: 80, spread: 60, origin: { y: 0.7 } });
+        addLog(`✨ 3마리 융합 완료! [${evoResult.evolvedSpeciesName}]으로 진화했습니다!`, 'level');
+        setBench(evoResult.bench);
+        setBoard(evoResult.board);
+        if (evoResult.returnedItems && evoResult.returnedItems.length > 0) {
+          setItems((prev) => [...prev, ...evoResult.returnedItems]);
+          addLog(`도구함으로 넘친 도구 ${evoResult.returnedItems.length}개가 반환되었습니다.`, 'system');
+        }
+      }
     } else {
-      setBench(newBench);
+      const newBench = [...bench];
+      newBench[emptyBenchIndex] = newPoke;
+
+      // Evolution check!
+      const evoResult = checkAndExecuteEvolution(newBench, board);
+      if (evoResult.didEvolve) {
+        confetti({ particleCount: 80, spread: 60, origin: { y: 0.7 } });
+        addLog(`✨ 3마리 융합 완료! [${evoResult.evolvedSpeciesName}]으로 진화했습니다!`, 'level');
+        setBench(evoResult.bench);
+        setBoard(evoResult.board);
+        if (evoResult.returnedItems && evoResult.returnedItems.length > 0) {
+          setItems((prev) => [...prev, ...evoResult.returnedItems]);
+          addLog(`도구함으로 넘친 도구 ${evoResult.returnedItems.length}개가 반환되었습니다.`, 'system');
+        }
+      } else {
+        setBench(newBench);
+      }
     }
   };
 
@@ -264,11 +291,16 @@ export default function App() {
           if (evolved) {
             confetti({ particleCount: 100, spread: 70, origin: { y: 0.7 } });
             addLog(`🔗 연결의끈 공명! [${evolved.name}]으로 통신진화했습니다!`, 'level');
-            setBoard((prev) => {
-              const next = prev.map((row) => [...row]);
-              next[r][c] = evolved;
-              return next;
-            });
+            const nextBoard = board.map((row) => [...row]);
+            nextBoard[r][c] = evolved;
+            const chainEvo = checkAndExecuteEvolution(bench, nextBoard);
+            if (chainEvo.didEvolve) {
+              addLog(`✨ 3마리 융합 완료! [${chainEvo.evolvedSpeciesName}]으로 진화했습니다!`, 'level');
+              setBench(chainEvo.bench);
+              setBoard(chainEvo.board);
+            } else {
+              setBoard(nextBoard);
+            }
           }
         }
         return;
@@ -363,11 +395,16 @@ export default function App() {
           if (evolved) {
             confetti({ particleCount: 100, spread: 70, origin: { y: 0.7 } });
             addLog(`🔗 연결의끈 공명! [${evolved.name}]으로 통신진화했습니다!`, 'level');
-            setBench((prev) => {
-              const next = [...prev];
-              next[index] = evolved;
-              return next;
-            });
+            const nextBench = [...bench];
+            nextBench[index] = evolved;
+            const chainEvo = checkAndExecuteEvolution(nextBench, board);
+            if (chainEvo.didEvolve) {
+              addLog(`✨ 3마리 융합 완료! [${chainEvo.evolvedSpeciesName}]으로 진화했습니다!`, 'level');
+              setBench(chainEvo.bench);
+              setBoard(chainEvo.board);
+            } else {
+              setBench(nextBench);
+            }
           }
         }
         return;

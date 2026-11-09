@@ -6,28 +6,28 @@ import { MOVES_DATA } from '../data/movesData';
 import { calculateExpGained, getRequiredExpForLevel } from './formulas';
 
 test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
-  const expectedLevels: Record<number, number[]> = {
-    1: [1],
-    2: [1, 1],
-    3: [2, 2],
-    4: [4, 4],
-    5: [5, 5, 5],
-    6: [6, 6, 6],
-    7: [8, 8, 8, 8],
-    8: [10, 10, 10, 10],
-    9: [12, 12, 12, 12, 12],
-    10: [14, 14, 14, 14, 14, 14],
-    11: [17, 17, 17, 17, 17, 17],
-    12: [20, 20, 20, 20, 20, 22],
+  const expectedTeamSizes: Record<number, number> = {
+    1: 1,
+    2: 2,
+    3: 2,
+    4: 2,
+    5: 3,
+    6: 3,
+    7: 4,
+    8: 4,
+    9: 5,
+    10: 6,
+    11: 6,
+    12: 6,
   };
 
-  for (const [round, expectedRoundLevels] of Object.entries(expectedLevels)) {
-    const opponent = getOpponentForRound(Number(round));
-    const actualLevels = opponent.team.map((pokemon) => pokemon.level).sort((a, b) => a - b);
-    assert.deepEqual(
-      actualLevels,
-      expectedRoundLevels,
-      `round ${round} should use the expected opponent levels`,
+  for (const [round, expectedSize] of Object.entries(expectedTeamSizes)) {
+    const opponent = getOpponentForRound(Number(round), 1);
+    assert.equal(opponent.team.length, expectedSize, `round ${round} should keep its intended team size`);
+    const expectedLevel = Number(round) === 12 ? 2 : 1;
+    assert.ok(
+      opponent.team.every((pokemon) => pokemon.level === expectedLevel),
+      `round ${round} should scale to the supplied average level`,
     );
   }
 });

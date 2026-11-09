@@ -107,20 +107,24 @@ test('battle EXP is faster and remains consistent with the level-up curve', () =
 test('every deployed player Pokemon receives EXP when an enemy is defeated', () => {
   const first = instantiatePokemon('pikachu', 'player');
   const second = instantiatePokemon('bulbasaur', 'player');
-  const benchOnly = instantiatePokemon('squirtle', 'player');
+  const fainted = instantiatePokemon('squirtle', 'player');
+  fainted.currentHp = 0;
+  const benchOnly = instantiatePokemon('charmander', 'player');
   const enemy = instantiatePokemon('pidgey', 'enemy');
-  const participants = new Set([first.instanceId, second.instanceId]);
+  const participants = new Set([first.instanceId, second.instanceId, fainted.instanceId]);
 
   const awards = grantExperienceToParticipants(
-    [first, second, benchOnly],
+    [first, second, fainted, benchOnly],
     participants,
     enemy.speciesId,
     enemy.level,
   );
 
-  assert.equal(awards.length, 2);
+  assert.equal(awards.length, 3);
   assert.ok(first.exp > 0 || first.level > 1);
   assert.ok(second.exp > 0 || second.level > 1);
+  assert.ok(fainted.exp > 0 || fainted.level > 1);
+  assert.equal(fainted.currentHp, 0, 'a fainted participant must not be revived by EXP');
   assert.equal(benchOnly.exp, 0);
   assert.equal(benchOnly.level, 1);
   assert.ok(awards.every((award) => award.expGained > 0));

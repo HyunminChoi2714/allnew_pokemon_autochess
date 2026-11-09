@@ -247,11 +247,13 @@ export function grantExperienceToParticipants(
     const learnedMoves: Move[] = [];
 
     while (pokemon.exp >= pokemon.maxExp && pokemon.level < 100) {
+      const wasAliveBeforeLevelUp = pokemon.currentHp > 0;
       pokemon.exp -= pokemon.maxExp;
       pokemon.level += 1;
       pokemon.maxExp = getRequiredExpForLevel(pokemon.level);
       pokemon.maxHp = Math.round(pokemon.stats.hp * (1 + (pokemon.level - 1) * 0.05));
-      pokemon.currentHp = pokemon.maxHp;
+      // Leveling restores living Pokemon as before, but must never revive a fainted unit.
+      if (wasAliveBeforeLevelUp) pokemon.currentHp = pokemon.maxHp;
       levelsGained += 1;
 
       const species = POKEMON_SPECIES[pokemon.speciesId];

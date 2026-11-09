@@ -328,7 +328,7 @@ export function calculateExpGained(
   const ratio = (2 * opponentLevel + 10) / (opponentLevel + selfLevel + 10);
   const part2 = Math.pow(ratio, 2.5) + 1;
 
-  const exp = part1 * part2 * extraBonus;
+  const exp = part1 * part2 * 2 * extraBonus;
   return Math.max(10, Math.round(exp));
 }
 

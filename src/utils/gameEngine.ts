@@ -200,13 +200,79 @@ export function generateShop(
 
 /**
  * At the start of each combat tick, every living unit from both teams is
- * locked into that tick's action set. Units defeated during the tick still
- * complete their action, making attacks resolve simultaneously in practice.
+ * locked into a stable action set. App.tsx queues those actions before resolving
+ * damage, so a unit defeated in the same tick still completes its action.
  */
 export function getCombatTickParticipants(
   units: Pick<ActivePokemon, 'instanceId' | 'currentHp'>[],
 ): Set<string> {
   return new Set(units.filter((unit) => unit.currentHp > 0).map((unit) => unit.instanceId));
+}
+
+/**
+ * Awards defeat EXP to every deployed player Pokemon captured in the battle snapshot.
+ * This deliberately does not depend on who landed the final hit.
+ */
+export interface ExperienceAward {
+  pokemon: ActivePokemon;
+  expGained: number;
+  levelsGained: number;
+  learnedMoves: Move[];
+}
+
+export function grantExperienceToParticipants(
+  units: ActivePokemon[],
+  participantIds: Set<string>,
+  defeatedSpeciesId: string,
+  opponentLevel: number,
+): ExperienceAward[] {
+  const defeatedSpecies = POKEMON_SPECIES[defeatedSpeciesId];
+  if (!defeatedSpecies) return [];
+
+  const awards: ExperienceAward[] = [];
+  for (const pokemon of units) {
+    if (pokemon.team !== 'player' || !participantIds.has(pokemon.instanceId)) continue;
+
+    const hasLuckyEgg = pokemon.items.some((item) => item.id === 'lucky_egg');
+    const expGained = calculateExpGained(
+      defeatedSpecies.baseExp,
+      opponentLevel,
+      pokemon.level,
+      true,
+      hasLuckyEgg,
+    );
+
+    pokemon.exp += expGained;
+    let levelsGained = 0;
+    const learnedMoves: Move[] = [];
+
+    while (pokemon.exp >= pokemon.maxExp && pokemon.level < 100) {
+      pokemon.exp -= pokemon.maxExp;
+      pokemon.level += 1;
+      pokemon.maxExp = getRequiredExpForLevel(pokemon.level);
+      pokemon.maxHp = Math.round(pokemon.stats.hp * (1 + (pokemon.level - 1) * 0.05));
+      pokemon.currentHp = pokemon.maxHp;
+      levelsGained += 1;
+
+      const species = POKEMON_SPECIES[pokemon.speciesId];
+      const newlyLearnable = (species?.possibleMoves ?? []).filter(
+        (entry) =>
+          entry.learnLevel <= pokemon.level &&
+          !pokemon.moves.some((move) => move.id === entry.moveId),
+      );
+      for (const entry of newlyLearnable) {
+        const move = MOVES_DATA[entry.moveId];
+        if (move && pokemon.moves.length < 4) {
+          pokemon.moves.push(move);
+          pokemon.currentPp[move.id] = move.maxPp;
+          learnedMoves.push(move);
+        }
+      }
+    }
+
+    awards.push({ pokemon, expGained, levelsGained, learnedMoves });
+  }
+  return awards;
 }
 
 /**

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { calculateAveragePlayerLevel, getOpponentForRound } from './aiOpponents';
+import { calculateAveragePlayerLevel, generateOpponentForPlayer, getOpponentForRound } from './aiOpponents';
 import { POKEMON_SPECIES, SHOP_POOL_TIER_BASE, SHOP_POOL_LEGENDARIES } from '../data/pokemonData';
 import { MOVES_DATA } from '../data/movesData';
 import { calculateExpGained, getRequiredExpForLevel } from './formulas';
@@ -39,7 +39,7 @@ test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
 });
 
 
-test('every opponent in every round matches the exact player average, including fractional levels', () => {
+test('every generated enemy in every round exactly matches the average of the complete player roster', () => {
   assert.equal(calculateAveragePlayerLevel([]), 1);
   assert.equal(calculateAveragePlayerLevel([2, 4, 6]), 4);
   assert.equal(calculateAveragePlayerLevel([2, 4, 6, Number.NaN]), 4);
@@ -47,23 +47,62 @@ test('every opponent in every round matches the exact player average, including 
   assert.equal(calculateAveragePlayerLevel([3, 4, 5, 6]), 4.5);
   assert.equal(calculateAveragePlayerLevel([99, 100]), 99.5);
 
-  const averages = [1, 1.5, 2.5, 3.25, 4.5, 8, 24.75, 99.5, 100];
+  // Each roster below represents a real board + bench combination. Several
+  // averages are fractional to prove that no rounding is applied.
+  const rosters = [
+    [1],
+    [1, 2],
+    [2, 3],
+    [2, 3, 4, 4],
+    [4, 5],
+    [7, 9],
+    [24, 25, 25, 25],
+    [99, 100],
+    [100],
+  ];
   const rounds = Array.from({ length: 100 }, (_, index) => index + 1);
 
-  for (const averageLevel of averages) {
-    const expectedLevel = Math.max(1, Math.min(100, averageLevel));
+  for (const rosterLevels of rosters) {
+    const expectedLevel = calculateAveragePlayerLevel(rosterLevels);
     for (const round of rounds) {
-      const opponent = getOpponentForRound(round, averageLevel);
-      assert.ok(opponent.team.length > 0, `round ${round} must have an opponent team`);
-      for (const pokemon of opponent.team) {
+      // Check the opponent template and the actual ActivePokemon instances
+      // placed on the board. This includes wild rounds, all boss rounds,
+      // Round 12's special team, and generated Round 13+ teams.
+      const generated = generateOpponentForPlayer(round, rosterLevels);
+      const template = getOpponentForRound(round, expectedLevel);
+
+      assert.equal(generated.averageLevel, expectedLevel);
+      assert.equal(generated.units.length, template.team.length);
+      assert.ok(generated.units.length > 0, `round ${round} must generate enemies`);
+
+      for (let index = 0; index < generated.units.length; index += 1) {
+        const actual = generated.units[index];
+        const expected = template.team[index];
+
         assert.equal(
-          pokemon.level,
+          expected.level,
           expectedLevel,
-          `round ${round}, ${pokemon.speciesId} must exactly match average level ${expectedLevel}`,
+          `round ${round}, ${expected.speciesId} template must match average ${expectedLevel}`,
         );
+        assert.equal(
+          actual.level,
+          expectedLevel,
+          `round ${round}, generated ${actual.speciesId} must exactly match average ${expectedLevel}`,
+        );
+        assert.equal(actual.team, 'enemy');
+        assert.equal(actual.speciesId, expected.speciesId);
+        assert.equal(actual.row, expected.row);
+        assert.equal(actual.col, expected.col);
+        assert.equal(Boolean(actual.isMega), Boolean(expected.isMega));
       }
     }
   }
+
+  // Explicit checks for the two wild encounters, a late boss, and endgame.
+  assert.ok(generateOpponentForPlayer(1, [2, 4]).units.every((pokemon) => pokemon.level === 3));
+  assert.ok(generateOpponentForPlayer(2, [2, 4]).units.every((pokemon) => pokemon.level === 3));
+  assert.ok(generateOpponentForPlayer(12, [10, 12]).units.every((pokemon) => pokemon.level === 11));
+  assert.ok(generateOpponentForPlayer(13, [10, 12]).units.every((pokemon) => pokemon.level === 11));
 });
 
 test('second- and third-generation additions are available and evolution-ready', () => {

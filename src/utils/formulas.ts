@@ -310,8 +310,9 @@ export function calculateDamage(
 }
 
 /**
- * Exact EXP formula from PDF Page 2:
- * EXP = [ (BaseEXP * OpponentLevel) / (5 * DistributionFactor) ] * [ ((2 * OpponentLevel + 10) / (OpponentLevel + SelfLevel + 10))^2.5 + 1 ] * 100 * ExtraBonus
+ * EXP reward formula normalized to the game's internal XP scale.
+ * The level-up curve starts at 150 XP, so the source formula's 100x
+ * display multiplier must not be applied to in-game XP.
  */
 export function calculateExpGained(
   baseExp: number,
@@ -327,7 +328,7 @@ export function calculateExpGained(
   const ratio = (2 * opponentLevel + 10) / (opponentLevel + selfLevel + 10);
   const part2 = Math.pow(ratio, 2.5) + 1;
 
-  const exp = part1 * part2 * 100 * extraBonus;
+  const exp = part1 * part2 * extraBonus;
   return Math.max(10, Math.round(exp));
 }
 

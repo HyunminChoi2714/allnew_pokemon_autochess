@@ -119,9 +119,52 @@ export function instantiatePokemon(
 /**
  * Generate 5 shop items based on trainer level
  */
-export function generateShop(trainerLevel: number): (PokemonSpecies | null)[] {
-  // Legendary appearance chance unlocks at Level 6+
-  // Lvl 6: 2%, Lvl 7: 5%, Lvl 8: 10%, Lvl 9: 18%, Lvl 10: 25%
+/**
+ * Owned Pokemon receive a four-times base shop weight. Duplicate copies
+ * increase the bonus further, capped at seven-times to avoid monopolizing
+ * all five shop slots.
+ */
+export function getShopPokemonWeight(speciesId: string, ownedSpeciesIds: string[] = []): number {
+  const species = POKEMON_SPECIES[speciesId];
+  if (!species) return 0;
+
+  const baseWeight =
+    species.cost >= 9 ? 0.18 :
+    species.cost >= 6 ? 0.38 :
+    species.cost >= 3 ? 0.68 : 1;
+
+  const ownedCount = ownedSpeciesIds.filter((id) => id === speciesId).length;
+  const ownedMultiplier = ownedCount > 0
+    ? 4 + Math.min(2, ownedCount - 1) * 1.5
+    : 1;
+
+  return baseWeight * ownedMultiplier;
+}
+
+function pickWeightedPokemonId(pool: string[], ownedSpeciesIds: string[]): string {
+  const weighted = pool
+    .map((id) => ({ id, weight: getShopPokemonWeight(id, ownedSpeciesIds) }))
+    .filter((entry) => entry.weight > 0);
+  const totalWeight = weighted.reduce((sum, entry) => sum + entry.weight, 0);
+  if (weighted.length === 0 || totalWeight <= 0) {
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  let roll = Math.random() * totalWeight;
+  for (const entry of weighted) {
+    roll -= entry.weight;
+    if (roll < 0) return entry.id;
+  }
+  return weighted[weighted.length - 1].id;
+}
+
+/**
+ * Generate five shop items. Owned Pokemon receive higher selection weight.
+ */
+export function generateShop(
+  trainerLevel: number,
+  ownedSpeciesIds: string[] = [],
+): (PokemonSpecies | null)[] {
   let legendaryRate = 0;
   if (trainerLevel === 6) legendaryRate = 0.03;
   else if (trainerLevel === 7) legendaryRate = 0.07;
@@ -129,20 +172,41 @@ export function generateShop(trainerLevel: number): (PokemonSpecies | null)[] {
   else if (trainerLevel === 9) legendaryRate = 0.20;
   else if (trainerLevel >= 10) legendaryRate = 0.30;
 
-  const result: (PokemonSpecies | null)[] = [];
-  const basePool = SHOP_POOL_TIER_BASE;
+  const ownedNormalIds = ownedSpeciesIds.filter(
+    (id) => POKEMON_SPECIES[id] && !POKEMON_SPECIES[id].isLegendary,
+  );
+  const ownedLegendaryIds = ownedSpeciesIds.filter(
+    (id) => POKEMON_SPECIES[id]?.isLegendary,
+  );
+  const basePool = Array.from(new Set([...SHOP_POOL_TIER_BASE, ...ownedNormalIds]))
+    .filter((id) => POKEMON_SPECIES[id] && !POKEMON_SPECIES[id].isLegendary);
+  const legendaryPool = Array.from(new Set([...SHOP_POOL_LEGENDARIES, ...ownedLegendaryIds]))
+    .filter((id) => POKEMON_SPECIES[id]?.isLegendary);
 
+  const result: (PokemonSpecies | null)[] = [];
   for (let i = 0; i < 5; i++) {
-    if (trainerLevel >= 6 && Math.random() < legendaryRate) {
-      const randomLeg = SHOP_POOL_LEGENDARIES[Math.floor(Math.random() * SHOP_POOL_LEGENDARIES.length)];
-      result.push(POKEMON_SPECIES[randomLeg]);
-    } else {
-      const randomId = basePool[Math.floor(Math.random() * basePool.length)];
+    if (trainerLevel >= 6 && legendaryPool.length > 0 && Math.random() < legendaryRate) {
+      const randomLegendaryId = pickWeightedPokemonId(legendaryPool, ownedSpeciesIds);
+      result.push(POKEMON_SPECIES[randomLegendaryId]);
+    } else if (basePool.length > 0) {
+      const randomId = pickWeightedPokemonId(basePool, ownedSpeciesIds);
       result.push(POKEMON_SPECIES[randomId]);
+    } else {
+      result.push(null);
     }
   }
-
   return result;
+}
+
+/**
+ * At the start of each combat tick, every living unit from both teams is
+ * locked into that tick's action set. Units defeated during the tick still
+ * complete their action, making attacks resolve simultaneously in practice.
+ */
+export function getCombatTickParticipants(
+  units: Pick<ActivePokemon, 'instanceId' | 'currentHp'>[],
+): Set<string> {
+  return new Set(units.filter((unit) => unit.currentHp > 0).map((unit) => unit.instanceId));
 }
 
 /**

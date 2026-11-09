@@ -120,8 +120,6 @@ export default function App() {
     (pokemon): pokemon is ActivePokemon => pokemon !== null && pokemon.team === 'player',
   );
   const playerAverageLevel = calculateAveragePlayerLevel(ownedPlayerPokemon.map((pokemon) => pokemon.level));
-  const playerAverageLevelRef = useRef<number>(playerAverageLevel);
-  playerAverageLevelRef.current = playerAverageLevel;
 
   // Keep the opponent stable throughout a round; recalculate it when a new round starts.
   const [currentOpponent, setCurrentOpponent] = useState<OpponentTrainer>(() =>

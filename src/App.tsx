@@ -15,6 +15,7 @@ import {
   checkAndExecuteEvolution,
   evolveWithLinkingCord,
   generateShop,
+  getCombatTickParticipants,
   instantiatePokemon,
   calculateSynergies,
   TRAINER_LEVEL_XP,
@@ -68,6 +69,11 @@ export default function App() {
     return grid;
   });
   const [bench, setBench] = useState<(ActivePokemon | null)[]>(new Array(9).fill(null));
+
+  // Track all owned Pokemon so their species can receive a shop appearance bonus.
+  const ownedSpeciesIds = [...bench, ...board.flat()]
+    .filter((pokemon): pokemon is ActivePokemon => pokemon !== null && pokemon.team === 'player')
+    .map((pokemon) => pokemon.speciesId);
 
   // Player Item Inventory (starts with 1 Linking Cord and Leftovers to test items!)
   const [items, setItems] = useState<Item[]>([
@@ -255,7 +261,7 @@ export default function App() {
       return;
     }
     setGold((prev) => prev - 2);
-    setShopItems(generateShop(trainerLevel));
+    setShopItems(generateShop(trainerLevel, ownedSpeciesIds));
     addLog('상점을 새로고침했습니다 (-2원).', 'system');
   };
 
@@ -660,6 +666,11 @@ export default function App() {
           }
         }
 
+        // Lock both teams' living units into this tick before any damage is applied.
+        // A unit defeated later in this tick still gets its simultaneous action.
+        const activeAtTickStart = getCombatTickParticipants(units);
+        const defeatedThisTick = new Set<string>();
+
         const livingPlayers = units.filter((u) => u.team === 'player' && u.currentHp > 0);
         const livingEnemies = units.filter((u) => u.team === 'enemy' && u.currentHp > 0);
 
@@ -707,7 +718,7 @@ export default function App() {
 
         // Process each unit's tick
         for (const unit of units) {
-          if (unit.currentHp <= 0) continue;
+          if (!activeAtTickStart.has(unit.instanceId)) continue;
 
           // Stealth timer
           if (unit.isStealthed) {
@@ -751,7 +762,7 @@ export default function App() {
             }
           }
 
-          if (unit.currentHp <= 0) continue;
+          if (!activeAtTickStart.has(unit.instanceId)) continue;
 
           // Attack speed & cooldown
           const flyingBonus =
@@ -769,7 +780,9 @@ export default function App() {
           unit.attackCooldown -= dtSeconds;
 
           // Find opponents
-          const opponents = units.filter((u) => u.team !== unit.team && u.currentHp > 0 && !u.isStealthed);
+          const opponents = units.filter(
+            (u) => u.team !== unit.team && activeAtTickStart.has(u.instanceId) && !u.isStealthed,
+          );
           if (opponents.length === 0) continue;
 
           // Find nearest opponent
@@ -918,7 +931,8 @@ export default function App() {
                 }
 
                 // Target fainted check & EXP distribution
-                if (nearestOpponent.currentHp <= 0) {
+                if (nearestOpponent.currentHp <= 0 && !defeatedThisTick.has(nearestOpponent.instanceId)) {
+                  defeatedThisTick.add(nearestOpponent.instanceId);
                   unit.kills += 1;
                   addLog(`💀 [${nearestOpponent.name}]이(가) 쓰러졌습니다!`, 'faint');
 
@@ -1154,7 +1168,7 @@ export default function App() {
 
     // Refresh shop if not locked
     if (!isShopLocked) {
-      setShopItems(generateShop(trainerLevel));
+      setShopItems(generateShop(trainerLevel, ownedSpeciesIds));
     }
 
     // Advance round after short delay

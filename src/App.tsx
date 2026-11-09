@@ -16,6 +16,7 @@ import {
   evolveWithLinkingCord,
   generateShop,
   getCombatTickParticipants,
+  grantExperienceToParticipants,
   instantiatePokemon,
   calculateSynergies,
   TRAINER_LEVEL_XP,
@@ -30,8 +31,6 @@ import {
   calculateAttackSpeed,
   calculateDamage,
   calculateEffectiveStats,
-  calculateExpGained,
-  getRequiredExpForLevel,
 } from './utils/formulas';
 import { GameBoard } from './components/GameBoard';
 import { ShopPanel } from './components/ShopPanel';
@@ -609,7 +608,7 @@ export default function App() {
           p.currentHp = p.maxHp;
           p.shield = 0;
           p.hitTargetInCombat = false;
-          p.attackCooldown = Math.random() * 0.3; // Slight desync
+          p.attackCooldown = 0; // Synchronize the opening action for every deployed Pokemon
 
           // Synergies on battle start
           if (p.team === 'player') {
@@ -666,10 +665,26 @@ export default function App() {
           }
         }
 
-        // Lock both teams' living units into this tick before any damage is applied.
-        // A unit defeated later in this tick still gets its simultaneous action.
-        const activeAtTickStart = getCombatTickParticipants(units);
+        // Freeze positions and living actors at tick start. Every eligible unit chooses
+        // an action from this same snapshot; damage is applied only after all choices exist.
+        const tickStartUnits = units.map((unit) => ({ ...unit }));
+        const unitById = new Map<string, ActivePokemon>();
+        for (const unit of units) unitById.set(unit.instanceId, unit);
+        const activeAtTickStart = getCombatTickParticipants(tickStartUnits);
+        const playerParticipantIds = new Set(
+          playerTeamSnapshotRef.current.map((entry) => entry.pokemon.instanceId),
+        );
         const defeatedThisTick = new Set<string>();
+        const pendingAttacks: {
+          attacker: ActivePokemon;
+          defender: ActivePokemon;
+          move: ActivePokemon['moves'][number];
+          calc: ReturnType<typeof calculateDamage>;
+        }[] = [];
+        const movementIntents: {
+          unit: ActivePokemon;
+          candidates: { row: number; col: number }[];
+        }[] = [];
 
         const livingPlayers = units.filter((u) => u.team === 'player' && u.currentHp > 0);
         const livingEnemies = units.filter((u) => u.team === 'enemy' && u.currentHp > 0);
@@ -779,25 +794,33 @@ export default function App() {
 
           unit.attackCooldown -= dtSeconds;
 
-          // Find opponents
-          const opponents = units.filter(
-            (u) => u.team !== unit.team && activeAtTickStart.has(u.instanceId) && !u.isStealthed,
+          // Select the nearest opponent that was alive at tick start.
+          // A target's position is read from the frozen snapshot, so earlier units cannot
+          // change later units' target selection within the same tick.
+          const opponentSnapshots = tickStartUnits.filter(
+            (candidate) =>
+              candidate.team !== unit.team &&
+              candidate.currentHp > 0 &&
+              !candidate.isStealthed,
           );
-          if (opponents.length === 0) continue;
 
-          // Find nearest opponent
-          let nearestOpponent: ActivePokemon | null = null;
+          let nearestOpponentSnapshot: ActivePokemon | null = null;
           let minDistance = Infinity;
-
-          for (const opp of opponents) {
-            const dist = Math.max(Math.abs(unit.row - opp.row), Math.abs(unit.col - opp.col));
-            if (dist < minDistance) {
-              minDistance = dist;
-              nearestOpponent = opp;
+          for (const opponent of opponentSnapshots) {
+            const distance = Math.max(
+              Math.abs(unit.row - opponent.row),
+              Math.abs(unit.col - opponent.col),
+            );
+            if (distance < minDistance) {
+              minDistance = distance;
+              nearestOpponentSnapshot = opponent;
             }
           }
 
-          if (!nearestOpponent) continue;
+          const nearestOpponent = nearestOpponentSnapshot
+            ? unitById.get(nearestOpponentSnapshot.instanceId) ?? null
+            : null;
+          if (!nearestOpponent || !nearestOpponentSnapshot) continue;
 
           // Range check (melee = 1, ranged = 2..4)
           if (minDistance <= unit.range) {
@@ -840,176 +863,259 @@ export default function App() {
                 isRanged: unit.range > 1,
               };
 
-              // Calculate damage
+              // Calculate now, apply later: all attacks selected this tick resolve together.
               const calc = calculateDamage(unit, nearestOpponent, move, {
                 synergyBonus: unit.team === 'player' ? synergyBonus : undefined,
                 isDragonActive,
               });
+              pendingAttacks.push({ attacker: unit, defender: nearestOpponent, move, calc });
+            }
+          } else {
+            // Queue a movement choice. Try diagonal, both forward axes, then flank spaces;
+            // all choices are based on the same tick-start target position.
+            const dRow = Math.sign(nearestOpponentSnapshot.row - unit.row);
+            const dCol = Math.sign(nearestOpponentSnapshot.col - unit.col);
+            const rawCandidates = [
+              { row: unit.row + dRow, col: unit.col + dCol },
+              { row: unit.row + dRow, col: unit.col },
+              { row: unit.row, col: unit.col + dCol },
+              { row: unit.row - 1, col: unit.col },
+              { row: unit.row + 1, col: unit.col },
+              { row: unit.row, col: unit.col - 1 },
+              { row: unit.row, col: unit.col + 1 },
+            ];
+            const seen = new Set<string>();
+            const candidates = rawCandidates.filter((position) => {
+              const row = Math.max(0, Math.min(7, position.row));
+              const col = Math.max(0, Math.min(6, position.col));
+              const key = `${row}:${col}`;
+              if ((row === unit.row && col === unit.col) || seen.has(key)) return false;
+              seen.add(key);
+              return true;
+            });
+            movementIntents.push({
+              unit,
+              candidates: candidates.map((position) => ({
+                row: Math.max(0, Math.min(7, position.row)),
+                col: Math.max(0, Math.min(6, position.col)),
+              })),
+            });
+          }
+        }
 
-              if (calc.isMiss) {
-                addFloatingText('빗나감!', nearestOpponent.col, nearestOpponent.row, 'miss');
-                addLog(`[${unit.name}]의 ${move.name}! 빗나갔다!`);
-              } else if (calc.typeMultiplier === 0) {
-                addFloatingText('효과가 없다', nearestOpponent.col, nearestOpponent.row, 'miss');
-                addLog(`[${unit.name}]의 ${move.name}! [${nearestOpponent.name}]에게 효과가 없다!`);
-              } else {
-                let damageToApply = calc.damage;
-                nearestOpponent.hitAnim = Date.now();
+        // Resolve movement intents after every unit has selected an action.
+        const occupiedPositions = new Set(
+          units.map((unit) => `${unit.row}:${unit.col}`),
+        );
+        for (const intent of movementIntents) {
+          const { unit, candidates } = intent;
+          occupiedPositions.delete(`${unit.row}:${unit.col}`);
+          const destination = candidates.find(
+            (position) => !occupiedPositions.has(`${position.row}:${position.col}`),
+          );
+          if (destination) {
+            unit.row = destination.row;
+            unit.col = destination.col;
+          }
+          occupiedPositions.add(`${unit.row}:${unit.col}`);
+        }
 
-                // Handle shields
-                if (nearestOpponent.shield > 0) {
-                  if (nearestOpponent.shield >= damageToApply) {
-                    nearestOpponent.shield -= damageToApply;
-                    damageToApply = 0;
-                  } else {
-                    damageToApply -= nearestOpponent.shield;
-                    nearestOpponent.shield = 0;
-                  }
+        // Resolve every queued attack after all living units have chosen one.
+        // A Pokemon knocked out during this resolution still completes its queued attack.
+        for (const attack of pendingAttacks) {
+          const { attacker: unit, defender: nearestOpponent, move, calc } = attack;
+          if (calc.isMiss) {
+            addFloatingText('빗나감!', nearestOpponent.col, nearestOpponent.row, 'miss');
+            addLog(`[${unit.name}]의 ${move.name}! 빗나갔다!`);
+            continue;
+          }
+          if (calc.typeMultiplier === 0) {
+            addFloatingText('효과가 없다', nearestOpponent.col, nearestOpponent.row, 'miss');
+            addLog(`[${unit.name}]의 ${move.name}! [${nearestOpponent.name}]에게 효과가 없다!`);
+            continue;
+          }
+
+          let damageToApply = calc.damage;
+          nearestOpponent.hitAnim = Date.now();
+
+          if (nearestOpponent.shield > 0) {
+            if (nearestOpponent.shield >= damageToApply) {
+              nearestOpponent.shield -= damageToApply;
+              damageToApply = 0;
+            } else {
+              damageToApply -= nearestOpponent.shield;
+              nearestOpponent.shield = 0;
+            }
+          }
+
+          const isFullHp = nearestOpponent.currentHp === nearestOpponent.maxHp;
+          if (
+            damageToApply >= nearestOpponent.currentHp &&
+            isFullHp &&
+            nearestOpponent.items.some((item) => item.id === 'focus_sash')
+          ) {
+            nearestOpponent.currentHp = 1;
+            nearestOpponent.items = nearestOpponent.items.filter((item) => item.id !== 'focus_sash');
+            addFloatingText('기합의띠 버팀!', nearestOpponent.col, nearestOpponent.row, 'crit');
+            addLog(`[${nearestOpponent.name}]이(가) 기합의띠로 1HP로 버텼다!`);
+          } else {
+            nearestOpponent.currentHp = Math.max(0, nearestOpponent.currentHp - damageToApply);
+          }
+
+          unit.damageDealt += calc.damage;
+          nearestOpponent.damageTaken += calc.damage;
+
+          if (calc.isCritical) {
+            addFloatingText(`💥${calc.damage} 급소!`, nearestOpponent.col, nearestOpponent.row, 'crit');
+          } else if (calc.typeMultiplier > 1.0) {
+            addFloatingText(`⚡${calc.damage} 굉장함!`, nearestOpponent.col, nearestOpponent.row, 'super');
+          } else if (calc.typeMultiplier < 1.0) {
+            addFloatingText(`${calc.damage} 별로`, nearestOpponent.col, nearestOpponent.row, 'not_effective');
+          } else {
+            addFloatingText(`-${calc.damage}`, nearestOpponent.col, nearestOpponent.row, 'damage');
+          }
+
+          const effectText =
+            calc.typeMultiplier > 1.0
+              ? ' (효과가 굉장했다!)'
+              : calc.typeMultiplier < 1.0
+                ? ' (효과가 별로다)'
+                : '';
+          const critText = calc.isCritical ? ' [급소에 맞았다!]' : '';
+          addLog(
+            `[${unit.name}]의 ${move.name}! -> [${nearestOpponent.name}]에게 ${calc.damage} 피해${critText}${effectText}`,
+            calc.typeMultiplier > 1.0 ? 'super' : calc.isCritical ? 'crit' : 'attack',
+          );
+
+          if (calc.drainAmount > 0) {
+            unit.currentHp = Math.min(unit.maxHp, unit.currentHp + calc.drainAmount);
+            addFloatingText(`+${calc.drainAmount}`, unit.col, unit.row, 'heal');
+          }
+          if (calc.recoilAmount > 0) {
+            unit.currentHp = Math.max(1, unit.currentHp - calc.recoilAmount);
+            addFloatingText(`-${calc.recoilAmount} 반동`, unit.col, unit.row, 'damage');
+          }
+
+          if (calc.statusApplied && !nearestOpponent.status) {
+            nearestOpponent.status = calc.statusApplied;
+            addFloatingText(`${calc.statusApplied}!`, nearestOpponent.col, nearestOpponent.row, 'status');
+            addLog(`[${nearestOpponent.name}]이(가) ${calc.statusApplied} 상태에 걸렸습니다!`, 'status');
+          }
+
+          if (calc.statChangesApplied) {
+            for (const change of calc.statChangesApplied) {
+              const targetUnit: ActivePokemon =
+                change.target === 'self' ? unit : nearestOpponent;
+              const statKey = change.stat as keyof StatRanks;
+              if (targetUnit.ranks[statKey] !== undefined) {
+                targetUnit.ranks[statKey] = Math.max(
+                  -6,
+                  Math.min(6, targetUnit.ranks[statKey] + change.stages),
+                );
+                const direction = change.stages > 0 ? '상승했다!' : '떨어졌다!';
+                addFloatingText(
+                  `${change.stat} ${direction}`,
+                  targetUnit.col,
+                  targetUnit.row,
+                  'rank',
+                );
+                addLog(`[${targetUnit.name}]의 ${change.stat}이(가) ${direction}`, 'rank');
+              }
+            }
+          }
+
+          if (nearestOpponent.currentHp <= 0 && !defeatedThisTick.has(nearestOpponent.instanceId)) {
+            defeatedThisTick.add(nearestOpponent.instanceId);
+            unit.kills += 1;
+            addLog(`💀 [${nearestOpponent.name}]이(가) 쓰러졌습니다!`, 'faint');
+
+            const darkSyn = synergies.find((synergy) => synergy.type === 'dark');
+            if (
+              unit.team === 'player' &&
+              darkSyn &&
+              darkSyn.activeTier >= 1 &&
+              unit.types.includes('dark')
+            ) {
+              unit.attackCooldown = 0;
+              unit.ranks.attack = Math.min(6, unit.ranks.attack + 1);
+              addFloatingText('흑야의잔영 발동!', unit.col, unit.row, 'rank');
+            }
+
+            if (nearestOpponent.team === 'enemy') {
+              const awards = grantExperienceToParticipants(
+                units,
+                playerParticipantIds,
+                nearestOpponent.speciesId,
+                nearestOpponent.level,
+              );
+              for (const award of awards) {
+                const recipient = award.pokemon;
+                addLog(
+                  `[${recipient.name}]이(가) 전투 보상으로 ${award.expGained} EXP를 획득했습니다!`,
+                  'system',
+                );
+                for (let levelIndex = 0; levelIndex < award.levelsGained; levelIndex += 1) {
+                  const gainedLevel = recipient.level - award.levelsGained + levelIndex + 1;
+                  addFloatingText(
+                    `Lv.${gainedLevel} 레벨업!`,
+                    recipient.col,
+                    recipient.row,
+                    'rank',
+                  );
+                  addLog(`✨ [${recipient.name}]이(가) Lv.${gainedLevel}로 레벨업했습니다!`, 'level');
                 }
-
-                // Focus Sash check (survive fatal hit if was 100% HP)
-                const isFullHp = nearestOpponent.currentHp === nearestOpponent.maxHp;
-                if (damageToApply >= nearestOpponent.currentHp && isFullHp && nearestOpponent.items.some((i) => i.id === 'focus_sash')) {
-                  nearestOpponent.currentHp = 1;
-                  nearestOpponent.items = nearestOpponent.items.filter((i) => i.id !== 'focus_sash');
-                  addFloatingText('기합의띠 버팀!', nearestOpponent.col, nearestOpponent.row, 'crit');
-                  addLog(`[${nearestOpponent.name}]이(가) 기합의띠로 1HP로 버텼다!`);
-                } else {
-                  nearestOpponent.currentHp = Math.max(0, nearestOpponent.currentHp - damageToApply);
-                }
-
-                unit.damageDealt += calc.damage;
-                nearestOpponent.damageTaken += calc.damage;
-
-                // Floating text display
-                if (calc.isCritical) {
-                  addFloatingText(`💥${calc.damage} 급소!`, nearestOpponent.col, nearestOpponent.row, 'crit');
-                } else if (calc.typeMultiplier > 1.0) {
-                  addFloatingText(`⚡${calc.damage} 굉장함!`, nearestOpponent.col, nearestOpponent.row, 'super');
-                } else if (calc.typeMultiplier < 1.0) {
-                  addFloatingText(`${calc.damage} 별로`, nearestOpponent.col, nearestOpponent.row, 'not_effective');
-                } else {
-                  addFloatingText(`-${calc.damage}`, nearestOpponent.col, nearestOpponent.row, 'damage');
-                }
-
-                // Log entry
-                const effectText = calc.typeMultiplier > 1.0 ? ' (효과가 굉장했다!)' : calc.typeMultiplier < 1.0 ? ' (효과가 별로다)' : '';
-                const critText = calc.isCritical ? ' [급소에 맞았다!]' : '';
-                addLog(`[${unit.name}]의 ${move.name}! -> [${nearestOpponent.name}]에게 ${calc.damage} 피해${critText}${effectText}`, calc.typeMultiplier > 1.0 ? 'super' : calc.isCritical ? 'crit' : 'attack');
-
-                // Lifesteal
-                if (calc.drainAmount > 0) {
-                  unit.currentHp = Math.min(unit.maxHp, unit.currentHp + calc.drainAmount);
-                  addFloatingText(`+${calc.drainAmount}`, unit.col, unit.row, 'heal');
-                }
-
-                // Recoil
-                if (calc.recoilAmount > 0) {
-                  unit.currentHp = Math.max(1, unit.currentHp - calc.recoilAmount);
-                  addFloatingText(`-${calc.recoilAmount} 반동`, unit.col, unit.row, 'damage');
-                }
-
-                // Status effect
-                if (calc.statusApplied && !nearestOpponent.status) {
-                  nearestOpponent.status = calc.statusApplied;
-                  addFloatingText(`${calc.statusApplied}!`, nearestOpponent.col, nearestOpponent.row, 'status');
-                  addLog(`[${nearestOpponent.name}]이(가) ${calc.statusApplied} 상태에 걸렸습니다!`, 'status');
-                }
-
-                // Stat changes
-                if (calc.statChangesApplied) {
-                  for (const sc of calc.statChangesApplied) {
-                    const targetUnit: ActivePokemon = sc.target === 'self' ? unit : nearestOpponent;
-                    const statKey = sc.stat as keyof StatRanks;
-                    if (targetUnit.ranks[statKey] !== undefined) {
-                      targetUnit.ranks[statKey] = Math.max(-6, Math.min(6, targetUnit.ranks[statKey] + sc.stages));
-                      const dir = sc.stages > 0 ? '상승했다!' : '떨어졌다!';
-                      addFloatingText(`${sc.stat} ${dir}`, targetUnit.col, targetUnit.row, 'rank');
-                      addLog(`[${targetUnit.name}]의 ${sc.stat}이(가) ${dir}`, 'rank');
-                    }
-                  }
-                }
-
-                // Target fainted check & EXP distribution
-                if (nearestOpponent.currentHp <= 0 && !defeatedThisTick.has(nearestOpponent.instanceId)) {
-                  defeatedThisTick.add(nearestOpponent.instanceId);
-                  unit.kills += 1;
-                  addLog(`💀 [${nearestOpponent.name}]이(가) 쓰러졌습니다!`, 'faint');
-
-                  // Dark synergy: On kill, reduce cooldown and buff atk
-                  const darkSyn = synergies.find((s) => s.type === 'dark');
-                  if (unit.team === 'player' && darkSyn && darkSyn.activeTier >= 1 && unit.types.includes('dark')) {
-                    unit.attackCooldown = 0;
-                    unit.ranks.attack = Math.min(6, unit.ranks.attack + 1);
-                    addFloatingText('흑야의잔영 발동!', unit.col, unit.row, 'rank');
-                  }
-
-                  // EXP Distribution Formula from PDF Page 2
-                  if (unit.team === 'player') {
-                    const targetSpecies = POKEMON_SPECIES[nearestOpponent.speciesId];
-                    const hasEgg = unit.items.some((i) => i.id === 'lucky_egg');
-                    const expGained = calculateExpGained(
-                      targetSpecies.baseExp,
-                      nearestOpponent.level,
-                      unit.level,
-                      true,
-                      hasEgg
-                    );
-
-                    unit.exp += expGained;
-                    addLog(`[${unit.name}]이(가) ${expGained} EXP를 획득했습니다!`, 'system');
-
-                    // Check level up!
-                    while (unit.exp >= unit.maxExp && unit.level < 100) {
-                      unit.level += 1;
-                      unit.exp -= unit.maxExp;
-                      unit.maxExp = getRequiredExpForLevel(unit.level);
-                      unit.maxHp = Math.round(unit.stats.hp * (1 + (unit.level - 1) * 0.05));
-                      unit.currentHp = unit.maxHp;
-                      addFloatingText(`Lv.${unit.level} 레벨업!`, unit.col, unit.row, 'rank');
-                      addLog(`✨ [${unit.name}]이(가) Lv.${unit.level}로 레벨업했습니다!`, 'level');
-
-                      // Unlock new moves from PokemonDB learnsets
-                      const ownSpecies = POKEMON_SPECIES[unit.speciesId];
-                      const newLearnable = (ownSpecies?.possibleMoves ?? []).filter(
-                        (pm) => pm.learnLevel <= unit.level && !unit.moves.some((m) => m.id === pm.moveId)
-                      );
-                      for (const nlm of newLearnable) {
-                        const newMove = MOVES_DATA[nlm.moveId];
-                        if (newMove && unit.moves.length < 4) {
-                          unit.moves.push(newMove);
-                          unit.currentPp[newMove.id] = newMove.maxPp;
-                          addLog(`📖 [${unit.name}]이(가) 새로운 기술 [${newMove.name}]을(를) 배웠습니다!`, 'level');
-                        }
-                      }
-                    }
-                  }
+                for (const learnedMove of award.learnedMoves) {
+                  addLog(
+                    `📖 [${recipient.name}]이(가) 새로운 기술 [${learnedMove.name}]을(를) 배웠습니다!`,
+                    'level',
+                  );
                 }
               }
             }
-          } else {
-            // Not in range: Move 1 tile toward nearest opponent
-            const dRow = Math.sign(nearestOpponent.row - unit.row);
-            const dCol = Math.sign(nearestOpponent.col - unit.col);
+          }
+        }
 
-            let targetR = unit.row + dRow;
-            let targetC = unit.col + dCol;
-
-            // Check boundaries
-            targetR = Math.max(0, Math.min(7, targetR));
-            targetC = Math.max(0, Math.min(6, targetC));
-
-            // Check collision with other units (both living and fainted)
-            const isOccupied = units.some((u) => u !== unit && u.row === targetR && u.col === targetC);
-            if (!isOccupied) {
-              unit.row = targetR;
-              unit.col = targetC;
-            } else {
-              // Try orthogonal movement
-              const altR = Math.max(0, Math.min(7, unit.row + dRow));
-              const isAltOccupied = units.some((u) => u !== unit && u.row === altR && u.col === unit.col);
-              if (!isAltOccupied) {
-                unit.row = altR;
+        // Poison or burn can also cause a faint without a queued direct hit.
+        for (const fainted of units) {
+          if (
+            fainted.currentHp <= 0 &&
+            activeAtTickStart.has(fainted.instanceId) &&
+            !defeatedThisTick.has(fainted.instanceId)
+          ) {
+            defeatedThisTick.add(fainted.instanceId);
+            addLog(`💀 [${fainted.name}]이(가) 쓰러졌습니다!`, 'faint');
+            if (fainted.team === 'enemy') {
+              const awards = grantExperienceToParticipants(
+                units,
+                playerParticipantIds,
+                fainted.speciesId,
+                fainted.level,
+              );
+              for (const award of awards) {
+                addLog(
+                  `[${award.pokemon.name}]이(가) 전투 보상으로 ${award.expGained} EXP를 획득했습니다!`,
+                  'system',
+                );
+                for (let levelIndex = 0; levelIndex < award.levelsGained; levelIndex += 1) {
+                  const gainedLevel =
+                    award.pokemon.level - award.levelsGained + levelIndex + 1;
+                  addFloatingText(
+                    `Lv.${gainedLevel} 레벨업!`,
+                    award.pokemon.col,
+                    award.pokemon.row,
+                    'rank',
+                  );
+                  addLog(
+                    `✨ [${award.pokemon.name}]이(가) Lv.${gainedLevel}로 레벨업했습니다!`,
+                    'level',
+                  );
+                }
+                for (const learnedMove of award.learnedMoves) {
+                  addLog(
+                    `📖 [${award.pokemon.name}]이(가) 새로운 기술 [${learnedMove.name}]을(를) 배웠습니다!`,
+                    'level',
+                  );
+                }
               }
             }
           }

@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { calculateAveragePlayerLevel, getOpponentForRound } from './aiOpponents';
-import { POKEMON_SPECIES, SHOP_POOL_TIER_BASE } from '../data/pokemonData';
+import { POKEMON_SPECIES, SHOP_POOL_TIER_BASE, SHOP_POOL_LEGENDARIES } from '../data/pokemonData';
 import { MOVES_DATA } from '../data/movesData';
 import { calculateExpGained, getRequiredExpForLevel } from './formulas';
+import { getCombatTickParticipants, getShopPokemonWeight } from './gameEngine';
+import type { ActivePokemon } from '../types/game';
 
 test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
   const expectedTeamSizes: Record<number, number> = {
@@ -90,10 +92,45 @@ test('second- and third-generation additions are available and evolution-ready',
 
 
 test('battle EXP uses the same scale as the level-up curve', () => {
-  assert.equal(calculateExpGained(150, 5, 5, true, false), 300);
-  assert.equal(calculateExpGained(150, 5, 5, true, true), 450);
-  assert.equal(calculateExpGained(150, 5, 5, false, false), 150);
+  assert.equal(calculateExpGained(150, 5, 5, true, false), 600);
+  assert.equal(calculateExpGained(150, 5, 5, true, true), 900);
+  assert.equal(calculateExpGained(150, 5, 5, false, false), 300);
 });
+
+
+test('all National Pokedex entries from generations 4 and 5 are present and shop-accessible', () => {
+  for (let dex = 387; dex <= 649; dex += 1) {
+    const species = Object.values(POKEMON_SPECIES).find((pokemon) => pokemon.pokedexNumber === dex);
+    assert.ok(species, `missing Gen 4/5 species at National Pokedex #${dex}`);
+    assert.ok(species.possibleMoves.length > 0, `${species.id} should have at least one move`);
+    for (const move of species.possibleMoves) {
+      assert.ok(MOVES_DATA[move.moveId], `${species.id} references missing move ${move.moveId}`);
+    }
+    const shopPool = species.isLegendary ? SHOP_POOL_LEGENDARIES : SHOP_POOL_TIER_BASE;
+    assert.ok(shopPool.includes(species.id), `${species.id} should be available in the appropriate shop pool`);
+  }
+});
+
+test('owned Pokemon receive a higher shop selection weight', () => {
+  const baseWeight = getShopPokemonWeight('gible', []);
+  const oneOwnedWeight = getShopPokemonWeight('gible', ['gible']);
+  const twoOwnedWeight = getShopPokemonWeight('gible', ['gible', 'gible']);
+  assert.ok(baseWeight > 0);
+  assert.equal(oneOwnedWeight, baseWeight * 4);
+  assert.ok(twoOwnedWeight > oneOwnedWeight);
+});
+
+test('all units alive at the start of a combat tick remain action participants', () => {
+  const units = [
+    { instanceId: 'player-1', currentHp: 50 },
+    { instanceId: 'player-2', currentHp: 20 },
+    { instanceId: 'enemy-1', currentHp: 40 },
+    { instanceId: 'enemy-2', currentHp: 0 },
+  ];
+  const participants = getCombatTickParticipants(units);
+  assert.deepEqual([...participants], ['player-1', 'player-2', 'enemy-1']);
+});
+
 
 test('level-up requirements increase and preserve the level cap', () => {
   for (let level = 1; level < 99; level += 1) {

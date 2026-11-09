@@ -39,19 +39,29 @@ test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
 });
 
 
-test('opponent levels track the average level of the owned team in every round', () => {
+test('every opponent in every round matches the exact player average, including fractional levels', () => {
   assert.equal(calculateAveragePlayerLevel([]), 1);
   assert.equal(calculateAveragePlayerLevel([2, 4, 6]), 4);
   assert.equal(calculateAveragePlayerLevel([2, 4, 6, Number.NaN]), 4);
+  assert.equal(calculateAveragePlayerLevel([1, 2]), 1.5);
+  assert.equal(calculateAveragePlayerLevel([3, 4, 5, 6]), 4.5);
+  assert.equal(calculateAveragePlayerLevel([99, 100]), 99.5);
 
-  for (const averageLevel of [1, 2.5, 8, 24, 99]) {
-    const expected = Math.max(1, Math.min(100, Math.round(averageLevel)));
-    for (const round of [1, 5, 6, 12, 13, 20]) {
+  const averages = [1, 1.5, 2.5, 3.25, 4.5, 8, 24.75, 99.5, 100];
+  const rounds = Array.from({ length: 100 }, (_, index) => index + 1);
+
+  for (const averageLevel of averages) {
+    const expectedLevel = Math.max(1, Math.min(100, averageLevel));
+    for (const round of rounds) {
       const opponent = getOpponentForRound(round, averageLevel);
-      const levels = opponent.team.map((pokemon) => pokemon.level);
-      assert.ok(levels.every((level) => level === expected), `round ${round} must not have a higher-level boss ace`);
-      const teamAverage = levels.reduce((sum, level) => sum + level, 0) / levels.length;
-      assert.ok(Math.abs(teamAverage - averageLevel) <= 1.1);
+      assert.ok(opponent.team.length > 0, `round ${round} must have an opponent team`);
+      for (const pokemon of opponent.team) {
+        assert.equal(
+          pokemon.level,
+          expectedLevel,
+          `round ${round}, ${pokemon.speciesId} must exactly match average level ${expectedLevel}`,
+        );
+      }
     }
   }
 });

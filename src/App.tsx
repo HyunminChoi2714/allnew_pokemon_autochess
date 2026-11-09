@@ -20,6 +20,7 @@ import {
   TRAINER_LEVEL_XP,
 } from './utils/gameEngine';
 import {
+  calculateAveragePlayerLevel,
   createOpponentPokemon,
   getOpponentForRound,
   OpponentTrainer,
@@ -109,8 +110,18 @@ export default function App() {
   ]);
   const [floatingTexts, setFloatingTexts] = useState<CombatFloatingText[]>([]);
 
-  // Current Opponent
-  const currentOpponent = getOpponentForRound(round);
+  // Calculate the level curve from every Pokemon the player owns (board + bench).
+  const ownedPlayerPokemon = [...bench, ...board.flat()].filter(
+    (pokemon): pokemon is ActivePokemon => pokemon !== null && pokemon.team === 'player',
+  );
+  const playerAverageLevel = calculateAveragePlayerLevel(ownedPlayerPokemon.map((pokemon) => pokemon.level));
+  const playerAverageLevelRef = useRef<number>(playerAverageLevel);
+  playerAverageLevelRef.current = playerAverageLevel;
+
+  // Keep the opponent stable throughout a round; recalculate it when a new round starts.
+  const [currentOpponent, setCurrentOpponent] = useState<OpponentTrainer>(() =>
+    getOpponentForRound(1, playerAverageLevel),
+  );
 
   // Ref to hold battle tick interval and player deployment snapshot
   const battleIntervalRef = useRef<any>(null);
@@ -144,8 +155,9 @@ export default function App() {
   const synergies = calculateSynergies(deployedPlayerPokemon);
 
   // Setup opponent team onto top 4 rows of board when planning starts
-  const setupOpponentForRound = useCallback((rNum: number) => {
-    const opp = getOpponentForRound(rNum);
+  const setupOpponentForRound = useCallback((rNum: number, averageLevel = playerAverageLevelRef.current) => {
+    const opp = getOpponentForRound(rNum, averageLevel);
+    setCurrentOpponent(opp);
     setBoard((prev) => {
       const next = prev.map((row) => [...row]);
       // Clear enemy rows (0..3)
@@ -1180,7 +1192,7 @@ export default function App() {
     for (let r = 0; r < 8; r++) newBoard.push(new Array(7).fill(null));
     setBoard(newBoard);
     setBench(new Array(9).fill(null));
-    setupOpponentForRound(1);
+    setupOpponentForRound(1, 1);
     addLog('새로운 포켓몬 오토체스 게임이 시작되었습니다!', 'system');
   };
 

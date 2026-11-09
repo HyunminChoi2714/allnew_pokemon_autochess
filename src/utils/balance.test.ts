@@ -142,10 +142,10 @@ test('second- and third-generation additions are available and evolution-ready',
 });
 
 
-test('battle EXP is faster and remains consistent with the level-up curve', () => {
-  assert.equal(calculateExpGained(150, 5, 5, true, false), 1200);
-  assert.equal(calculateExpGained(150, 5, 5, true, true), 1800);
-  assert.equal(calculateExpGained(150, 5, 5, false, false), 600);
+test('battle EXP rewards are five times the previous values for all reward types', () => {
+  assert.equal(calculateExpGained(150, 5, 5, true, false), 6000);
+  assert.equal(calculateExpGained(150, 5, 5, true, true), 9000);
+  assert.equal(calculateExpGained(150, 5, 5, false, false), 3000);
   assert.equal(getRequiredExpForLevel(1), 70);
   assert.equal(getRequiredExpForLevel(2), 166);
 });

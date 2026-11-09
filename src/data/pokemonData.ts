@@ -1,5 +1,6 @@
 import { PokemonSpecies } from '../types/game';
 import { POKEMON_GENERATIONS_4_5 } from './pokemonGenerations45';
+import { POKEMON_GENERATIONS_6_7 } from './pokemonGenerations67';
 
 export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'bulbasaur': {
@@ -3634,6 +3635,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'chespin': {
       "id": "chespin",
       "pokedexNumber": 650,
+      "generation": 6,
       "name": "도치마론",
       "nameEn": "Chespin",
       "types": [
@@ -3671,6 +3673,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'fennekin': {
       "id": "fennekin",
       "pokedexNumber": 653,
+      "generation": 6,
       "name": "푸호꼬",
       "nameEn": "Fennekin",
       "types": [
@@ -3708,6 +3711,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'greninja': {
       "id": "greninja",
       "pokedexNumber": 658,
+      "generation": 6,
       "name": "개굴닌자",
       "nameEn": "Greninja",
       "types": [
@@ -3750,6 +3754,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'sylveon': {
       "id": "sylveon",
       "pokedexNumber": 700,
+      "generation": 6,
       "name": "님피아",
       "nameEn": "Sylveon",
       "types": [
@@ -3783,6 +3788,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'xerneas': {
       "id": "xerneas",
       "pokedexNumber": 716,
+      "generation": 6,
       "name": "제르네아스",
       "nameEn": "Xerneas",
       "types": [
@@ -3821,6 +3827,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'yveltal': {
       "id": "yveltal",
       "pokedexNumber": 717,
+      "generation": 6,
       "name": "이벨타르",
       "nameEn": "Yveltal",
       "types": [
@@ -3860,6 +3867,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'zygarde': {
       "id": "zygarde",
       "pokedexNumber": 718,
+      "generation": 6,
       "name": "지가르데",
       "nameEn": "Zygarde",
       "types": [
@@ -3899,6 +3907,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'rowlet': {
       "id": "rowlet",
       "pokedexNumber": 722,
+      "generation": 7,
       "name": "나몰빼미",
       "nameEn": "Rowlet",
       "types": [
@@ -3941,6 +3950,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'litten': {
       "id": "litten",
       "pokedexNumber": 725,
+      "generation": 7,
       "name": "냐오불",
       "nameEn": "Litten",
       "types": [
@@ -3978,6 +3988,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'popplio': {
       "id": "popplio",
       "pokedexNumber": 728,
+      "generation": 7,
       "name": "누리공",
       "nameEn": "Popplio",
       "types": [
@@ -4015,6 +4026,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'mimikyu': {
       "id": "mimikyu",
       "pokedexNumber": 778,
+      "generation": 7,
       "name": "따라큐",
       "nameEn": "Mimikyu",
       "types": [
@@ -4049,6 +4061,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'solgaleo': {
       "id": "solgaleo",
       "pokedexNumber": 791,
+      "generation": 7,
       "name": "솔가레오",
       "nameEn": "Solgaleo",
       "types": [
@@ -4092,6 +4105,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'lunala': {
       "id": "lunala",
       "pokedexNumber": 792,
+      "generation": 7,
       "name": "루나아라",
       "nameEn": "Lunala",
       "types": [
@@ -4135,6 +4149,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
   'necrozma': {
       "id": "necrozma",
       "pokedexNumber": 800,
+      "generation": 7,
       "name": "네크로즈마",
       "nameEn": "Necrozma",
       "types": [
@@ -6128,6 +6143,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
     "evolvesTo": "metagross"
   },
   ...POKEMON_GENERATIONS_4_5,
+  ...POKEMON_GENERATIONS_6_7,
 };
 
 export const SHOP_POOL_TIER_BASE: string[] = Array.from(new Set([
@@ -6426,6 +6442,10 @@ export const SHOP_POOL_TIER_BASE: string[] = Array.from(new Set([
   'zweilous',
   'larvesta',
   'volcarona',
+  // Automatically include every non-legendary species from National Dex #650-809.
+  ...Object.values(POKEMON_SPECIES)
+    .filter((pokemon) => pokemon.pokedexNumber >= 650 && pokemon.pokedexNumber <= 809 && !pokemon.isLegendary)
+    .map((pokemon) => pokemon.id),
 ]));
 
 export const SHOP_POOL_LEGENDARIES: string[] = Array.from(new Set([
@@ -6486,4 +6506,8 @@ export const SHOP_POOL_LEGENDARIES: string[] = Array.from(new Set([
   'keldeo',
   'meloetta',
   'genesect',
+  // Automatically include all legendary and mythical species from National Dex #650-809.
+  ...Object.values(POKEMON_SPECIES)
+    .filter((pokemon) => pokemon.pokedexNumber >= 650 && pokemon.pokedexNumber <= 809 && pokemon.isLegendary)
+    .map((pokemon) => pokemon.id),
 ]));

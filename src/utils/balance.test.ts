@@ -24,9 +24,11 @@ test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
   for (const [round, expectedSize] of Object.entries(expectedTeamSizes)) {
     const opponent = getOpponentForRound(Number(round), 1);
     assert.equal(opponent.team.length, expectedSize, `round ${round} should keep its intended team size`);
-    const expectedLevel = Number(round) === 12 ? 2 : 1;
     assert.ok(
-      opponent.team.every((pokemon) => pokemon.level === expectedLevel),
+      opponent.team.every((pokemon) => {
+        const isFinalBossAce = Number(round) === 12 && pokemon.speciesId === 'mewtwo';
+        return pokemon.level === (isFinalBossAce ? 2 : 1);
+      }),
       `round ${round} should scale to the supplied average level`,
     );
   }

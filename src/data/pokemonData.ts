@@ -4696,7 +4696,7 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
       "range": 3,
       "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1025.gif",
       "isLegendary": true
-  },,
+  },
   'bayleef': {
     "id": "bayleef",
     "pokedexNumber": 153,

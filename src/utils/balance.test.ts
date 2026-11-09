@@ -32,11 +32,8 @@ test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
     const opponent = getOpponentForRound(Number(round), 1);
     assert.equal(opponent.team.length, expectedSize, `round ${round} should keep its intended team size`);
     assert.ok(
-      opponent.team.every((pokemon) => {
-        const isFinalBossAce = Number(round) === 12 && pokemon.speciesId === 'mewtwo';
-        return pokemon.level === (isFinalBossAce ? 2 : 1);
-      }),
-      `round ${round} should scale to the supplied average level`,
+      opponent.team.every((pokemon) => pokemon.level === 1),
+      `round ${round} must give every opponent exactly the supplied average level`,
     );
   }
 });
@@ -52,7 +49,7 @@ test('opponent levels track the average level of the owned team in every round',
     for (const round of [1, 5, 6, 12, 13, 20]) {
       const opponent = getOpponentForRound(round, averageLevel);
       const levels = opponent.team.map((pokemon) => pokemon.level);
-      assert.ok(levels.every((level) => level === expected || level === Math.min(100, expected + 1)));
+      assert.ok(levels.every((level) => level === expected), `round ${round} must not have a higher-level boss ace`);
       const teamAverage = levels.reduce((sum, level) => sum + level, 0) / levels.length;
       assert.ok(Math.abs(teamAverage - averageLevel) <= 1.1);
     }
@@ -130,6 +127,24 @@ test('every deployed player Pokemon receives EXP when an enemy is defeated', () 
   assert.ok(awards.every((award) => award.expGained > 0));
 });
 
+
+test('all National Pokedex entries from generations 6 and 7 are present and shop-accessible', () => {
+  const generationCounts = { 6: 0, 7: 0 };
+  for (let dex = 650; dex <= 809; dex += 1) {
+    const species = Object.values(POKEMON_SPECIES).find((pokemon) => pokemon.pokedexNumber === dex);
+    assert.ok(species, `missing Gen 6/7 species at National Pokedex #${dex}`);
+    const expectedGeneration = dex <= 721 ? 6 : 7;
+    assert.equal(species.generation, expectedGeneration, `${species.id} has the wrong generation`);
+    generationCounts[expectedGeneration as 6 | 7] += 1;
+    assert.ok(species.possibleMoves.length > 0, `${species.id} should have at least one move`);
+    for (const move of species.possibleMoves) {
+      assert.ok(MOVES_DATA[move.moveId], `${species.id} references missing move ${move.moveId}`);
+    }
+    const shopPool = species.isLegendary ? SHOP_POOL_LEGENDARIES : SHOP_POOL_TIER_BASE;
+    assert.ok(shopPool.includes(species.id), `${species.id} should be available in the appropriate shop pool`);
+  }
+  assert.deepEqual(generationCounts, { 6: 72, 7: 88 });
+});
 
 test('all National Pokedex entries from generations 4 and 5 are present and shop-accessible', () => {
   for (let dex = 387; dex <= 649; dex += 1) {

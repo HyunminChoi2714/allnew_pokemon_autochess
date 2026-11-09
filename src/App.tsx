@@ -938,13 +938,14 @@ export default function App() {
                       unit.level += 1;
                       unit.exp -= unit.maxExp;
                       unit.maxExp = getRequiredExpForLevel(unit.level);
-                      unit.maxHp = Math.round(unit.maxHp * 1.05);
+                      unit.maxHp = Math.round(unit.stats.hp * (1 + (unit.level - 1) * 0.05));
                       unit.currentHp = unit.maxHp;
                       addFloatingText(`Lv.${unit.level} 레벨업!`, unit.col, unit.row, 'rank');
                       addLog(`✨ [${unit.name}]이(가) Lv.${unit.level}로 레벨업했습니다!`, 'level');
 
                       // Unlock new moves from PokemonDB learnsets
-                      const newLearnable = targetSpecies.possibleMoves.filter(
+                      const ownSpecies = POKEMON_SPECIES[unit.speciesId];
+                      const newLearnable = (ownSpecies?.possibleMoves ?? []).filter(
                         (pm) => pm.learnLevel <= unit.level && !unit.moves.some((m) => m.id === pm.moveId)
                       );
                       for (const nlm of newLearnable) {

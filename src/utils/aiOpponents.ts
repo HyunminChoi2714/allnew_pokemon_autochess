@@ -147,9 +147,9 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '💧',
     dialogue: '물 포켓몬의 유연함과 회복력을 느껴봐!',
     team: [
-      { speciesId: 'squirtle', level: 6, row: 2, col: 2 },
-      { speciesId: 'psyduck', level: 6, row: 2, col: 4 },
-      { speciesId: 'lapras', level: 6, row: 1, col: 3 },
+      { speciesId: 'squirtle', level: 5, row: 2, col: 2 },
+      { speciesId: 'psyduck', level: 5, row: 2, col: 4 },
+      { speciesId: 'lapras', level: 5, row: 1, col: 3 },
     ],
   },
   {
@@ -159,9 +159,9 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '⚡',
     dialogue: '헤이 베이비! 짜릿한 백만 볼트 맛을 보여주지!',
     team: [
-      { speciesId: 'pikachu', level: 8, row: 2, col: 2 },
-      { speciesId: 'raichu', level: 8, row: 2, col: 4 },
-      { speciesId: 'machoke', level: 8, row: 3, col: 3 },
+      { speciesId: 'pikachu', level: 6, row: 2, col: 2 },
+      { speciesId: 'raichu', level: 6, row: 2, col: 4 },
+      { speciesId: 'machoke', level: 6, row: 3, col: 3 },
     ],
   },
   {
@@ -171,10 +171,10 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '🌸',
     dialogue: '풀 포켓몬들의 생명력은 끝이 없답니다.',
     team: [
-      { speciesId: 'bulbasaur', level: 10, row: 2, col: 1 },
-      { speciesId: 'ivysaur', level: 10, row: 2, col: 3 },
-      { speciesId: 'butterfree', level: 10, row: 1, col: 5 },
-      { speciesId: 'turtwig', level: 10, row: 3, col: 3 },
+      { speciesId: 'bulbasaur', level: 8, row: 2, col: 1 },
+      { speciesId: 'ivysaur', level: 8, row: 2, col: 3 },
+      { speciesId: 'butterfree', level: 8, row: 1, col: 5 },
+      { speciesId: 'turtwig', level: 8, row: 3, col: 3 },
     ],
   },
   {
@@ -184,10 +184,10 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '🔮',
     dialogue: '당신의 패배는 이미 미래에 예견되어 있어요.',
     team: [
-      { speciesId: 'kadabra', level: 13, row: 1, col: 2 },
-      { speciesId: 'haunter', level: 13, row: 1, col: 4 },
-      { speciesId: 'espeon', level: 13, row: 2, col: 3 },
-      { speciesId: 'mimikyu', level: 13, row: 3, col: 3 },
+      { speciesId: 'kadabra', level: 10, row: 1, col: 2 },
+      { speciesId: 'haunter', level: 10, row: 1, col: 4 },
+      { speciesId: 'espeon', level: 10, row: 2, col: 3 },
+      { speciesId: 'mimikyu', level: 10, row: 3, col: 3 },
     ],
   },
   {
@@ -197,11 +197,11 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '🔥',
     dialogue: '불꽃 시너지의 뜨거운 화염을 견딜 수 있을까?!',
     team: [
-      { speciesId: 'charmeleon', level: 16, row: 2, col: 2 },
-      { speciesId: 'arcanine', level: 16, row: 1, col: 3 },
-      { speciesId: 'charizard', level: 16, row: 1, col: 4 },
-      { speciesId: 'flareon', level: 16, row: 3, col: 3 },
-      { speciesId: 'machamp', level: 16, row: 3, col: 1 },
+      { speciesId: 'charmeleon', level: 12, row: 2, col: 2 },
+      { speciesId: 'arcanine', level: 12, row: 1, col: 3 },
+      { speciesId: 'charizard', level: 12, row: 1, col: 4 },
+      { speciesId: 'flareon', level: 12, row: 3, col: 3 },
+      { speciesId: 'machamp', level: 12, row: 3, col: 1 },
     ],
   },
   {
@@ -211,12 +211,12 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '🕶️',
     dialogue: '세계는 악의 손아귀에 있다. 너의 포켓몬을 모두 빼앗아주마!',
     team: [
-      { speciesId: 'persian', level: 19, row: 2, col: 1 },
-      { speciesId: 'garchomp', level: 19, row: 3, col: 3 },
-      { speciesId: 'gengar', level: 19, row: 1, col: 5 },
-      { speciesId: 'gyarados', level: 19, row: 2, col: 4 },
-      { speciesId: 'scizor', level: 19, row: 3, col: 2 },
-      { speciesId: 'tyranitar', level: 19, row: 2, col: 3 },
+      { speciesId: 'persian', level: 14, row: 2, col: 1 },
+      { speciesId: 'garchomp', level: 14, row: 3, col: 3 },
+      { speciesId: 'gengar', level: 14, row: 1, col: 5 },
+      { speciesId: 'gyarados', level: 14, row: 2, col: 4 },
+      { speciesId: 'scizor', level: 14, row: 3, col: 2 },
+      { speciesId: 'tyranitar', level: 14, row: 2, col: 3 },
     ],
   },
   {
@@ -226,12 +226,12 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '👑',
     dialogue: '포켓몬과의 깊은 유대감이 만들어내는 진정한 힘을 보여드리죠.',
     team: [
-      { speciesId: 'garchomp', level: 23, row: 3, col: 3, isMega: true },
-      { speciesId: 'lucario', level: 23, row: 2, col: 2 },
-      { speciesId: 'gardevoir', level: 23, row: 1, col: 4 },
-      { speciesId: 'gengar', level: 23, row: 1, col: 2 },
-      { speciesId: 'metagross', level: 23, row: 3, col: 5 },
-      { speciesId: 'greninja', level: 23, row: 2, col: 4 },
+      { speciesId: 'garchomp', level: 17, row: 3, col: 3, isMega: true },
+      { speciesId: 'lucario', level: 17, row: 2, col: 2 },
+      { speciesId: 'gardevoir', level: 17, row: 1, col: 4 },
+      { speciesId: 'gengar', level: 17, row: 1, col: 2 },
+      { speciesId: 'metagross', level: 17, row: 3, col: 5 },
+      { speciesId: 'greninja', level: 17, row: 2, col: 4 },
     ],
   },
   {
@@ -241,12 +241,12 @@ export const OPPONENTS: OpponentTrainer[] = [
     avatar: '🧢',
     dialogue: '...... (조용히 몬스터볼을 던진다)',
     team: [
-      { speciesId: 'charizard', level: 28, row: 2, col: 3, isMega: true },
-      { speciesId: 'blastoise', level: 28, row: 3, col: 2 },
-      { speciesId: 'venusaur', level: 28, row: 3, col: 4 },
-      { speciesId: 'raichu', level: 28, row: 2, col: 5 },
-      { speciesId: 'snorlax', level: 28, row: 3, col: 3 },
-      { speciesId: 'mewtwo', level: 30, row: 1, col: 3 },
+      { speciesId: 'charizard', level: 20, row: 2, col: 3, isMega: true },
+      { speciesId: 'blastoise', level: 20, row: 3, col: 2 },
+      { speciesId: 'venusaur', level: 20, row: 3, col: 4 },
+      { speciesId: 'raichu', level: 20, row: 2, col: 5 },
+      { speciesId: 'snorlax', level: 20, row: 3, col: 3 },
+      { speciesId: 'mewtwo', level: 22, row: 1, col: 3 },
     ],
   },
 ];
@@ -260,7 +260,7 @@ export function getOpponentForRound(round: number): OpponentTrainer {
   }
   
   // Procedural scaling for round 13+
-  const bonusLevel = 30 + (round - 12) * 4;
+  const bonusLevel = 20 + (round - 12) * 3;
   return {
     round,
     name: `마스터 챔피언 Lv.${bonusLevel}`,

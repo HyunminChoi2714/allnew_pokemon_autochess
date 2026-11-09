@@ -4,7 +4,12 @@ import { calculateAveragePlayerLevel, getOpponentForRound } from './aiOpponents'
 import { POKEMON_SPECIES, SHOP_POOL_TIER_BASE, SHOP_POOL_LEGENDARIES } from '../data/pokemonData';
 import { MOVES_DATA } from '../data/movesData';
 import { calculateExpGained, getRequiredExpForLevel } from './formulas';
-import { getCombatTickParticipants, getShopPokemonWeight } from './gameEngine';
+import {
+  getCombatTickParticipants,
+  getShopPokemonWeight,
+  grantExperienceToParticipants,
+  instantiatePokemon,
+} from './gameEngine';
 import type { ActivePokemon } from '../types/game';
 
 test('mid-game opponent levels ramp gradually through rounds 5 and 6', () => {
@@ -91,10 +96,34 @@ test('second- and third-generation additions are available and evolution-ready',
 });
 
 
-test('battle EXP uses the same scale as the level-up curve', () => {
-  assert.equal(calculateExpGained(150, 5, 5, true, false), 600);
-  assert.equal(calculateExpGained(150, 5, 5, true, true), 900);
-  assert.equal(calculateExpGained(150, 5, 5, false, false), 300);
+test('battle EXP is faster and remains consistent with the level-up curve', () => {
+  assert.equal(calculateExpGained(150, 5, 5, true, false), 1200);
+  assert.equal(calculateExpGained(150, 5, 5, true, true), 1800);
+  assert.equal(calculateExpGained(150, 5, 5, false, false), 600);
+  assert.equal(getRequiredExpForLevel(1), 70);
+  assert.equal(getRequiredExpForLevel(2), 166);
+});
+
+test('every deployed player Pokemon receives EXP when an enemy is defeated', () => {
+  const first = instantiatePokemon('pikachu', 'player');
+  const second = instantiatePokemon('bulbasaur', 'player');
+  const benchOnly = instantiatePokemon('squirtle', 'player');
+  const enemy = instantiatePokemon('pidgey', 'enemy');
+  const participants = new Set([first.instanceId, second.instanceId]);
+
+  const awards = grantExperienceToParticipants(
+    [first, second, benchOnly],
+    participants,
+    enemy.speciesId,
+    enemy.level,
+  );
+
+  assert.equal(awards.length, 2);
+  assert.ok(first.exp > 0 || first.level > 1);
+  assert.ok(second.exp > 0 || second.level > 1);
+  assert.equal(benchOnly.exp, 0);
+  assert.equal(benchOnly.level, 1);
+  assert.ok(awards.every((award) => award.expGained > 0));
 });
 
 
@@ -129,6 +158,12 @@ test('all units alive at the start of a combat tick remain action participants',
   ];
   const participants = getCombatTickParticipants(units);
   assert.deepEqual([...participants], ['player-1', 'player-2', 'enemy-1']);
+
+  // The action set is frozen: damage during this tick cannot cancel a queued action.
+  units[0].currentHp = 0;
+  units[1].currentHp = 0;
+  assert.ok(participants.has('player-1'));
+  assert.ok(participants.has('player-2'));
 });
 
 

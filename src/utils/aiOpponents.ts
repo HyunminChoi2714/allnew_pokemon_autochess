@@ -302,3 +302,39 @@ export function getOpponentForRound(round: number, playerAverageLevel: number = 
     ],
   };
 }
+
+/**
+ * The only runtime path for generating an opponent team.
+ * Calculate the average from the player's complete owned roster first, then
+ * create every enemy (wild encounter, boss, or regular trainer) at that exact
+ * value. Fractional averages are intentionally preserved.
+ */
+export function generateOpponentForPlayer(
+  round: number,
+  playerPokemonLevels: number[],
+): {
+  opponent: OpponentTrainer;
+  units: ActivePokemon[];
+  averageLevel: number;
+} {
+  const averageLevel = calculateAveragePlayerLevel(playerPokemonLevels);
+  const opponent = getOpponentForRound(round, averageLevel);
+  const units = opponent.team.map((pokemon) =>
+    createOpponentPokemon(
+      pokemon.speciesId,
+      averageLevel,
+      pokemon.row,
+      pokemon.col,
+      pokemon.isMega,
+    ),
+  );
+
+  // Fail loudly rather than ever allowing a mismatched enemy into the battle.
+  if (units.some((pokemon) => pokemon.level !== averageLevel)) {
+    throw new Error(
+      `Opponent level invariant failed in round ${round}: every enemy must be level ${averageLevel}.`,
+    );
+  }
+
+  return { opponent, units, averageLevel };
+}

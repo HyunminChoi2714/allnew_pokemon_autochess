@@ -618,12 +618,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/667.gif"
   },
-  'pyroar-male': {
-    "id": "pyroar-male",
+  'pyroar': {
+    "id": "pyroar",
     "pokedexNumber": 668,
     "generation": 6,
     "name": "화염레오",
-    "nameEn": "Pyroar-Male",
+    "nameEn": "Pyroar",
     "types": [
       "fire",
       "normal"
@@ -989,12 +989,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/677.gif"
   },
-  'meowstic-male': {
-    "id": "meowstic-male",
+  'meowstic': {
+    "id": "meowstic",
     "pokedexNumber": 678,
     "generation": 6,
     "name": "냐오닉스",
-    "nameEn": "Meowstic-Male",
+    "nameEn": "Meowstic",
     "types": [
       "psychic"
     ],
@@ -1103,12 +1103,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 3,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/680.gif"
   },
-  'aegislash-shield': {
-    "id": "aegislash-shield",
+  'aegislash': {
+    "id": "aegislash",
     "pokedexNumber": 681,
     "generation": 6,
     "name": "킬가르도",
-    "nameEn": "Aegislash-Shield",
+    "nameEn": "Aegislash",
     "types": [
       "steel",
       "ghost"
@@ -2214,12 +2214,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 4,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/709.gif"
   },
-  'pumpkaboo-average': {
-    "id": "pumpkaboo-average",
+  'pumpkaboo': {
+    "id": "pumpkaboo",
     "pokedexNumber": 710,
     "generation": 6,
     "name": "호바귀",
-    "nameEn": "Pumpkaboo-Average",
+    "nameEn": "Pumpkaboo",
     "types": [
       "ghost",
       "grass"
@@ -2258,12 +2258,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 4,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/710.gif"
   },
-  'gourgeist-average': {
-    "id": "gourgeist-average",
+  'gourgeist': {
+    "id": "gourgeist",
     "pokedexNumber": 711,
     "generation": 6,
     "name": "펌킨인",
-    "nameEn": "Gourgeist-Average",
+    "nameEn": "Gourgeist",
     "types": [
       "ghost",
       "grass"
@@ -3240,12 +3240,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 4,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/740.gif"
   },
-  'oricorio-baile': {
-    "id": "oricorio-baile",
+  'oricorio': {
+    "id": "oricorio",
     "pokedexNumber": 741,
     "generation": 7,
     "name": "춤추새",
-    "nameEn": "Oricorio-Baile",
+    "nameEn": "Oricorio",
     "types": [
       "fire",
       "flying"
@@ -3401,12 +3401,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 2,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/744.gif"
   },
-  'lycanroc-midday': {
-    "id": "lycanroc-midday",
+  'lycanroc': {
+    "id": "lycanroc",
     "pokedexNumber": 745,
     "generation": 7,
     "name": "루가루암",
-    "nameEn": "Lycanroc-Midday",
+    "nameEn": "Lycanroc",
     "types": [
       "rock"
     ],
@@ -3431,12 +3431,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 2,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/745.gif"
   },
-  'wishiwashi-solo': {
-    "id": "wishiwashi-solo",
+  'wishiwashi': {
+    "id": "wishiwashi",
     "pokedexNumber": 746,
     "generation": 7,
     "name": "약어리",
-    "nameEn": "Wishiwashi-Solo",
+    "nameEn": "Wishiwashi",
     "types": [
       "water"
     ],
@@ -4560,12 +4560,12 @@ export const POKEMON_GENERATIONS_6_7: Record<string, PokemonSpecies> = {
     "range": 4,
     "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/773.gif"
   },
-  'minior-red-meteor': {
-    "id": "minior-red-meteor",
+  'minior': {
+    "id": "minior",
     "pokedexNumber": 774,
     "generation": 7,
     "name": "메테노",
-    "nameEn": "Minior-Red-Meteor",
+    "nameEn": "Minior",
     "types": [
       "rock",
       "flying"

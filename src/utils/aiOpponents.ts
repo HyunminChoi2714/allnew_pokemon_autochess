@@ -252,29 +252,57 @@ export const OPPONENTS: OpponentTrainer[] = [
 ];
 
 /**
- * Get opponent for round N, or procedural infinite round generator
+ * Returns the average level of the player's owned Pokemon (board + bench).
+ * An empty roster starts at level 1 so the opening encounter remains fair.
  */
-export function getOpponentForRound(round: number): OpponentTrainer {
+export function calculateAveragePlayerLevel(levels: number[]): number {
+  const validLevels = levels
+    .filter((level) => Number.isFinite(level) && level >= 1)
+    .map((level) => Math.min(100, level));
+
+  if (validLevels.length === 0) return 1;
+  return validLevels.reduce((sum, level) => sum + level, 0) / validLevels.length;
+}
+
+/**
+ * Match every round's opponent levels to the player's current roster average.
+ * Boss teams keep a single +1 level ace, while their larger team composition
+ * and stronger species provide the round-to-round challenge.
+ */
+export function getOpponentForRound(round: number, playerAverageLevel: number = 1): OpponentTrainer {
+  const targetLevel = Math.max(
+    1,
+    Math.min(100, Math.round(Number.isFinite(playerAverageLevel) ? playerAverageLevel : 1)),
+  );
+
   if (round <= OPPONENTS.length) {
-    return OPPONENTS[round - 1];
+    const opponent = OPPONENTS[Math.max(0, round - 1)];
+    return {
+      ...opponent,
+      team: opponent.team.map((pokemon) => ({
+        ...pokemon,
+        level: Math.min(
+          100,
+          targetLevel + (round === 12 && pokemon.speciesId === 'mewtwo' ? 1 : 0),
+        ),
+      })),
+    };
   }
-  
-  // Procedural scaling for round 13+
-  const bonusLevel = 20 + (round - 12) * 3;
+
   return {
     round,
-    name: `마스터 챔피언 Lv.${bonusLevel}`,
+    name: `마스터 챔피언 Lv.${targetLevel}`,
     title: `엔드게임 마스터 트레이너 (Round ${round})`,
     avatar: '⚡',
     dialogue: '끝없는 시련에 도전할 준비가 되었는가!',
     team: [
-      { speciesId: 'garchomp', level: bonusLevel, row: 3, col: 3, isMega: true },
-      { speciesId: 'charizard', level: bonusLevel, row: 2, col: 2 },
-      { speciesId: 'mewtwo', level: bonusLevel + 2, row: 1, col: 3 },
-      { speciesId: 'dragonite', level: bonusLevel, row: 2, col: 4 },
-      { speciesId: 'koraidon', level: bonusLevel + 2, row: 3, col: 1 },
-      { speciesId: 'miraidon', level: bonusLevel + 2, row: 1, col: 5 },
-      { speciesId: 'tinkaton', level: bonusLevel + 2, row: 3, col: 5 },
+      { speciesId: 'garchomp', level: targetLevel, row: 3, col: 3, isMega: true },
+      { speciesId: 'charizard', level: targetLevel, row: 2, col: 2 },
+      { speciesId: 'mewtwo', level: Math.min(100, targetLevel + 1), row: 1, col: 3 },
+      { speciesId: 'dragonite', level: targetLevel, row: 2, col: 4 },
+      { speciesId: 'koraidon', level: Math.min(100, targetLevel + 1), row: 3, col: 1 },
+      { speciesId: 'miraidon', level: Math.min(100, targetLevel + 1), row: 1, col: 5 },
+      { speciesId: 'tinkaton', level: targetLevel, row: 3, col: 5 },
     ],
   };
 }

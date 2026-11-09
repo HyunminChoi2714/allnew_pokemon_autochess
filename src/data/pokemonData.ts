@@ -2192,7 +2192,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/152.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/152.gif",
+      "evolvesTo": "bayleef"
   },
   'cyndaquil': {
       "id": "cyndaquil",
@@ -2229,7 +2230,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/155.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/155.gif",
+      "evolvesTo": "quilava"
   },
   'totodile': {
       "id": "totodile",
@@ -2266,7 +2268,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/158.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/158.gif",
+      "evolvesTo": "croconaw"
   },
   'espeon': {
       "id": "espeon",
@@ -2603,7 +2606,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/252.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/252.gif",
+      "evolvesTo": "grovyle"
   },
   'torchic': {
       "id": "torchic",
@@ -2640,7 +2644,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/255.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/255.gif",
+      "evolvesTo": "combusken"
   },
   'mudkip': {
       "id": "mudkip",
@@ -2677,7 +2682,8 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
           }
       ],
       "range": 3,
-      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/258.gif"
+      "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/258.gif",
+      "evolvesTo": "marshtomp"
   },
   'gardevoir': {
       "id": "gardevoir",
@@ -4690,6 +4696,1411 @@ export const POKEMON_SPECIES: Record<string, PokemonSpecies> = {
       "range": 3,
       "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/1025.gif",
       "isLegendary": true
+  },,
+  'bayleef': {
+    "id": "bayleef",
+    "pokedexNumber": 153,
+    "name": "베이리프",
+    "nameEn": "Bayleef",
+    "types": [
+      "grass"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 62,
+      "defense": 80,
+      "spAttack": 63,
+      "spDefense": 80,
+      "speed": 60
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "vine_whip",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "energy_ball",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "solar_beam",
+        "learnLevel": 25
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/153.gif",
+    "evolvesTo": "meganium"
+  },
+  'meganium': {
+    "id": "meganium",
+    "pokedexNumber": 154,
+    "name": "메가니움",
+    "nameEn": "Meganium",
+    "types": [
+      "grass"
+    ],
+    "baseStats": {
+      "hp": 800,
+      "attack": 82,
+      "defense": 100,
+      "spAttack": 83,
+      "spDefense": 100,
+      "speed": 80
+    },
+    "baseExp": 236,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "energy_ball",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "giga_drain",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "solar_beam",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/154.gif"
+  },
+  'quilava': {
+    "id": "quilava",
+    "pokedexNumber": 156,
+    "name": "마그케인",
+    "nameEn": "Quilava",
+    "types": [
+      "fire"
+    ],
+    "baseStats": {
+      "hp": 580,
+      "attack": 64,
+      "defense": 58,
+      "spAttack": 80,
+      "spDefense": 65,
+      "speed": 80
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "ember",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "flamethrower",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "fire_blast",
+        "learnLevel": 25
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/156.gif",
+    "evolvesTo": "typhlosion"
+  },
+  'typhlosion': {
+    "id": "typhlosion",
+    "pokedexNumber": 157,
+    "name": "블레이범",
+    "nameEn": "Typhlosion",
+    "types": [
+      "fire"
+    ],
+    "baseStats": {
+      "hp": 780,
+      "attack": 84,
+      "defense": 78,
+      "spAttack": 109,
+      "spDefense": 85,
+      "speed": 100
+    },
+    "baseExp": 240,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "flamethrower",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "fire_blast",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "flare_blitz",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/157.gif"
+  },
+  'croconaw': {
+    "id": "croconaw",
+    "pokedexNumber": 159,
+    "name": "엘리게이",
+    "nameEn": "Croconaw",
+    "types": [
+      "water"
+    ],
+    "baseStats": {
+      "hp": 650,
+      "attack": 80,
+      "defense": 80,
+      "spAttack": 59,
+      "spDefense": 63,
+      "speed": 58
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "water_gun",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "surf",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "waterfall",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/159.gif",
+    "evolvesTo": "feraligatr"
+  },
+  'feraligatr': {
+    "id": "feraligatr",
+    "pokedexNumber": 160,
+    "name": "장크로다일",
+    "nameEn": "Feraligatr",
+    "types": [
+      "water"
+    ],
+    "baseStats": {
+      "hp": 850,
+      "attack": 105,
+      "defense": 100,
+      "spAttack": 79,
+      "spDefense": 83,
+      "speed": 78
+    },
+    "baseExp": 239,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "waterfall",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "surf",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "hydro_pump",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/160.gif"
+  },
+  'mareep': {
+    "id": "mareep",
+    "pokedexNumber": 179,
+    "name": "메리프",
+    "nameEn": "Mareep",
+    "types": [
+      "electric"
+    ],
+    "baseStats": {
+      "hp": 550,
+      "attack": 40,
+      "defense": 40,
+      "spAttack": 65,
+      "spDefense": 45,
+      "speed": 35
+    },
+    "baseExp": 56,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "thundershock",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "thunderbolt",
+        "learnLevel": 8
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/179.gif",
+    "evolvesTo": "flaaffy"
+  },
+  'flaaffy': {
+    "id": "flaaffy",
+    "pokedexNumber": 180,
+    "name": "보송송",
+    "nameEn": "Flaaffy",
+    "types": [
+      "electric"
+    ],
+    "baseStats": {
+      "hp": 700,
+      "attack": 55,
+      "defense": 55,
+      "spAttack": 80,
+      "spDefense": 60,
+      "speed": 45
+    },
+    "baseExp": 128,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "thundershock",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "thunderbolt",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "thunder",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/180.gif",
+    "evolvesTo": "ampharos"
+  },
+  'ampharos': {
+    "id": "ampharos",
+    "pokedexNumber": 181,
+    "name": "전룡",
+    "nameEn": "Ampharos",
+    "types": [
+      "electric"
+    ],
+    "baseStats": {
+      "hp": 900,
+      "attack": 75,
+      "defense": 85,
+      "spAttack": 115,
+      "spDefense": 90,
+      "speed": 55
+    },
+    "baseExp": 230,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "thunderbolt",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "thunder",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "flash_cannon",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/181.gif"
+  },
+  'wooper': {
+    "id": "wooper",
+    "pokedexNumber": 194,
+    "name": "우파",
+    "nameEn": "Wooper",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 550,
+      "attack": 45,
+      "defense": 45,
+      "spAttack": 25,
+      "spDefense": 25,
+      "speed": 15
+    },
+    "baseExp": 42,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 2,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "water_gun",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "toxic",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/194.gif",
+    "evolvesTo": "quagsire"
+  },
+  'quagsire': {
+    "id": "quagsire",
+    "pokedexNumber": 195,
+    "name": "누오",
+    "nameEn": "Quagsire",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 950,
+      "attack": 85,
+      "defense": 85,
+      "spAttack": 65,
+      "spDefense": 65,
+      "speed": 35
+    },
+    "baseExp": 151,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 2,
+    "cost": 6,
+    "possibleMoves": [
+      {
+        "moveId": "water_gun",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "surf",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/195.gif"
+  },
+  'houndour': {
+    "id": "houndour",
+    "pokedexNumber": 228,
+    "name": "델빌",
+    "nameEn": "Houndour",
+    "types": [
+      "dark",
+      "fire"
+    ],
+    "baseStats": {
+      "hp": 450,
+      "attack": 60,
+      "defense": 30,
+      "spAttack": 80,
+      "spDefense": 50,
+      "speed": 65
+    },
+    "baseExp": 66,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 2,
+    "cost": 2,
+    "possibleMoves": [
+      {
+        "moveId": "ember",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "dark_pulse",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "flamethrower",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/228.gif",
+    "evolvesTo": "houndoom"
+  },
+  'houndoom': {
+    "id": "houndoom",
+    "pokedexNumber": 229,
+    "name": "헬가",
+    "nameEn": "Houndoom",
+    "types": [
+      "dark",
+      "fire"
+    ],
+    "baseStats": {
+      "hp": 750,
+      "attack": 90,
+      "defense": 50,
+      "spAttack": 110,
+      "spDefense": 80,
+      "speed": 95
+    },
+    "baseExp": 175,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 2,
+    "cost": 6,
+    "possibleMoves": [
+      {
+        "moveId": "flamethrower",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "dark_pulse",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "fire_blast",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/229.gif"
+  },
+  'phanpy': {
+    "id": "phanpy",
+    "pokedexNumber": 231,
+    "name": "코코리",
+    "nameEn": "Phanpy",
+    "types": [
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 900,
+      "attack": 60,
+      "defense": 60,
+      "spAttack": 40,
+      "spDefense": 40,
+      "speed": 40
+    },
+    "baseExp": 66,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 2,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "tackle",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "bonemerang",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/231.gif",
+    "evolvesTo": "donphan"
+  },
+  'donphan': {
+    "id": "donphan",
+    "pokedexNumber": 232,
+    "name": "코리갑",
+    "nameEn": "Donphan",
+    "types": [
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 900,
+      "attack": 120,
+      "defense": 120,
+      "spAttack": 60,
+      "spDefense": 60,
+      "speed": 50
+    },
+    "baseExp": 175,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 2,
+    "cost": 6,
+    "possibleMoves": [
+      {
+        "moveId": "earthquake",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "bonemerang",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/232.gif"
+  },
+  'larvitar': {
+    "id": "larvitar",
+    "pokedexNumber": 246,
+    "name": "애버라스",
+    "nameEn": "Larvitar",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 500,
+      "attack": 64,
+      "defense": 50,
+      "spAttack": 45,
+      "spDefense": 50,
+      "speed": 41
+    },
+    "baseExp": 60,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 2,
+    "possibleMoves": [
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "dark_pulse",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/246.gif",
+    "evolvesTo": "pupitar"
+  },
+  'pupitar': {
+    "id": "pupitar",
+    "pokedexNumber": 247,
+    "name": "데기라스",
+    "nameEn": "Pupitar",
+    "types": [
+      "rock",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 700,
+      "attack": 84,
+      "defense": 70,
+      "spAttack": 65,
+      "spDefense": 70,
+      "speed": 51
+    },
+    "baseExp": 144,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "dark_pulse",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/247.gif",
+    "evolvesTo": "tyranitar"
+  },
+  'grovyle': {
+    "id": "grovyle",
+    "pokedexNumber": 253,
+    "name": "나무돌이",
+    "nameEn": "Grovyle",
+    "types": [
+      "grass"
+    ],
+    "baseStats": {
+      "hp": 500,
+      "attack": 65,
+      "defense": 45,
+      "spAttack": 85,
+      "spDefense": 65,
+      "speed": 95
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "vine_whip",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "energy_ball",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "solar_beam",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/253.gif",
+    "evolvesTo": "sceptile"
+  },
+  'sceptile': {
+    "id": "sceptile",
+    "pokedexNumber": 254,
+    "name": "나무킹",
+    "nameEn": "Sceptile",
+    "types": [
+      "grass"
+    ],
+    "baseStats": {
+      "hp": 700,
+      "attack": 85,
+      "defense": 65,
+      "spAttack": 105,
+      "spDefense": 85,
+      "speed": 120
+    },
+    "baseExp": 239,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "energy_ball",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "solar_beam",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "giga_drain",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/254.gif"
+  },
+  'combusken': {
+    "id": "combusken",
+    "pokedexNumber": 256,
+    "name": "영치코",
+    "nameEn": "Combusken",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 85,
+      "defense": 60,
+      "spAttack": 85,
+      "spDefense": 60,
+      "speed": 55
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "ember",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "mach_punch",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "flamethrower",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/256.gif",
+    "evolvesTo": "blaziken"
+  },
+  'blaziken': {
+    "id": "blaziken",
+    "pokedexNumber": 257,
+    "name": "번치코",
+    "nameEn": "Blaziken",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "baseStats": {
+      "hp": 800,
+      "attack": 120,
+      "defense": 70,
+      "spAttack": 110,
+      "spDefense": 70,
+      "speed": 80
+    },
+    "baseExp": 239,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "close_combat",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "flare_blitz",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "fire_blast",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/257.gif"
+  },
+  'marshtomp': {
+    "id": "marshtomp",
+    "pokedexNumber": 259,
+    "name": "늪짱이",
+    "nameEn": "Marshtomp",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 700,
+      "attack": 85,
+      "defense": 70,
+      "spAttack": 60,
+      "spDefense": 70,
+      "speed": 50
+    },
+    "baseExp": 142,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "water_gun",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "surf",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/259.gif",
+    "evolvesTo": "swampert"
+  },
+  'swampert': {
+    "id": "swampert",
+    "pokedexNumber": 260,
+    "name": "대짱이",
+    "nameEn": "Swampert",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 1000,
+      "attack": 110,
+      "defense": 90,
+      "spAttack": 85,
+      "spDefense": 90,
+      "speed": 60
+    },
+    "baseExp": 241,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "surf",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "hydro_pump",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/260.gif"
+  },
+  'ralts': {
+    "id": "ralts",
+    "pokedexNumber": 280,
+    "name": "랄토스",
+    "nameEn": "Ralts",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "baseStats": {
+      "hp": 280,
+      "attack": 25,
+      "defense": 25,
+      "spAttack": 45,
+      "spDefense": 35,
+      "speed": 40
+    },
+    "baseExp": 40,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "psybeam",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "psychic",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "moonblast",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/280.gif",
+    "evolvesTo": "kirlia"
+  },
+  'kirlia': {
+    "id": "kirlia",
+    "pokedexNumber": 281,
+    "name": "킬리아",
+    "nameEn": "Kirlia",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "baseStats": {
+      "hp": 380,
+      "attack": 35,
+      "defense": 35,
+      "spAttack": 65,
+      "spDefense": 55,
+      "speed": 50
+    },
+    "baseExp": 97,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "psybeam",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "psychic",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "moonblast",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/281.gif",
+    "evolvesTo": "gardevoir"
+  },
+  'shroomish': {
+    "id": "shroomish",
+    "pokedexNumber": 285,
+    "name": "버섯꼬",
+    "nameEn": "Shroomish",
+    "types": [
+      "grass"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 40,
+      "defense": 60,
+      "spAttack": 40,
+      "spDefense": 60,
+      "speed": 35
+    },
+    "baseExp": 59,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 2,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "vine_whip",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "giga_drain",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "solar_beam",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/285.gif",
+    "evolvesTo": "breloom"
+  },
+  'breloom': {
+    "id": "breloom",
+    "pokedexNumber": 286,
+    "name": "버섯모",
+    "nameEn": "Breloom",
+    "types": [
+      "grass",
+      "fighting"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 130,
+      "defense": 80,
+      "spAttack": 60,
+      "spDefense": 60,
+      "speed": 70
+    },
+    "baseExp": 161,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 2,
+    "cost": 6,
+    "possibleMoves": [
+      {
+        "moveId": "mach_punch",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "giga_drain",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "close_combat",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/286.gif"
+  },
+  'aron': {
+    "id": "aron",
+    "pokedexNumber": 304,
+    "name": "가보리",
+    "nameEn": "Aron",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "baseStats": {
+      "hp": 500,
+      "attack": 70,
+      "defense": 100,
+      "spAttack": 40,
+      "spDefense": 40,
+      "speed": 30
+    },
+    "baseExp": 66,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "tackle",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "iron_head",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/304.gif",
+    "evolvesTo": "lairon"
+  },
+  'lairon': {
+    "id": "lairon",
+    "pokedexNumber": 305,
+    "name": "갱도라",
+    "nameEn": "Lairon",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 90,
+      "defense": 140,
+      "spAttack": 50,
+      "spDefense": 50,
+      "speed": 40
+    },
+    "baseExp": 151,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "iron_head",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/305.gif",
+    "evolvesTo": "aggron"
+  },
+  'aggron': {
+    "id": "aggron",
+    "pokedexNumber": 306,
+    "name": "보스로라",
+    "nameEn": "Aggron",
+    "types": [
+      "steel",
+      "rock"
+    ],
+    "baseStats": {
+      "hp": 700,
+      "attack": 110,
+      "defense": 180,
+      "spAttack": 60,
+      "spDefense": 60,
+      "speed": 50
+    },
+    "baseExp": 239,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "iron_head",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/306.gif"
+  },
+  'trapinch': {
+    "id": "trapinch",
+    "pokedexNumber": 328,
+    "name": "톱치",
+    "nameEn": "Trapinch",
+    "types": [
+      "ground"
+    ],
+    "baseStats": {
+      "hp": 450,
+      "attack": 100,
+      "defense": 45,
+      "spAttack": 45,
+      "spDefense": 45,
+      "speed": 10
+    },
+    "baseExp": 58,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 1,
+    "possibleMoves": [
+      {
+        "moveId": "earthquake",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "bonemerang",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "stone_edge",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/328.gif",
+    "evolvesTo": "vibrava"
+  },
+  'vibrava': {
+    "id": "vibrava",
+    "pokedexNumber": 329,
+    "name": "비브라바",
+    "nameEn": "Vibrava",
+    "types": [
+      "ground",
+      "dragon"
+    ],
+    "baseStats": {
+      "hp": 500,
+      "attack": 70,
+      "defense": 50,
+      "spAttack": 50,
+      "spDefense": 50,
+      "speed": 70
+    },
+    "baseExp": 119,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "dragon_claw",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "air_slash",
+        "learnLevel": 15
+      }
+    ],
+    "range": 3,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/329.gif",
+    "evolvesTo": "flygon"
+  },
+  'flygon': {
+    "id": "flygon",
+    "pokedexNumber": 330,
+    "name": "플라이곤",
+    "nameEn": "Flygon",
+    "types": [
+      "ground",
+      "dragon"
+    ],
+    "baseStats": {
+      "hp": 800,
+      "attack": 100,
+      "defense": 80,
+      "spAttack": 80,
+      "spDefense": 80,
+      "speed": 100
+    },
+    "baseExp": 234,
+    "evolutionStage": 3,
+    "evolutionStagesTotal": 3,
+    "cost": 9,
+    "possibleMoves": [
+      {
+        "moveId": "dragon_claw",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "draco_meteor",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "earthquake",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/330.gif"
+  },
+  'bagon': {
+    "id": "bagon",
+    "pokedexNumber": 371,
+    "name": "아공이",
+    "nameEn": "Bagon",
+    "types": [
+      "dragon"
+    ],
+    "baseStats": {
+      "hp": 450,
+      "attack": 75,
+      "defense": 60,
+      "spAttack": 40,
+      "spDefense": 30,
+      "speed": 50
+    },
+    "baseExp": 60,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 2,
+    "possibleMoves": [
+      {
+        "moveId": "dragon_claw",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "draco_meteor",
+        "learnLevel": 8
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/371.gif",
+    "evolvesTo": "shelgon"
+  },
+  'shelgon': {
+    "id": "shelgon",
+    "pokedexNumber": 372,
+    "name": "쉘곤",
+    "nameEn": "Shelgon",
+    "types": [
+      "dragon"
+    ],
+    "baseStats": {
+      "hp": 650,
+      "attack": 95,
+      "defense": 100,
+      "spAttack": 60,
+      "spDefense": 50,
+      "speed": 50
+    },
+    "baseExp": 147,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "dragon_claw",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "draco_meteor",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "iron_head",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/372.gif",
+    "evolvesTo": "salamence"
+  },
+  'beldum': {
+    "id": "beldum",
+    "pokedexNumber": 374,
+    "name": "메탕",
+    "nameEn": "Beldum",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "baseStats": {
+      "hp": 400,
+      "attack": 55,
+      "defense": 80,
+      "spAttack": 35,
+      "spDefense": 60,
+      "speed": 30
+    },
+    "baseExp": 60,
+    "evolutionStage": 1,
+    "evolutionStagesTotal": 3,
+    "cost": 2,
+    "possibleMoves": [
+      {
+        "moveId": "tackle",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "iron_head",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "psybeam",
+        "learnLevel": 15
+      }
+    ],
+    "range": 1,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/374.gif",
+    "evolvesTo": "metang"
+  },
+  'metang': {
+    "id": "metang",
+    "pokedexNumber": 375,
+    "name": "메탕구",
+    "nameEn": "Metang",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "baseStats": {
+      "hp": 600,
+      "attack": 75,
+      "defense": 100,
+      "spAttack": 55,
+      "spDefense": 80,
+      "speed": 50
+    },
+    "baseExp": 147,
+    "evolutionStage": 2,
+    "evolutionStagesTotal": 3,
+    "cost": 3,
+    "possibleMoves": [
+      {
+        "moveId": "iron_head",
+        "learnLevel": 1
+      },
+      {
+        "moveId": "flash_cannon",
+        "learnLevel": 8
+      },
+      {
+        "moveId": "psybeam",
+        "learnLevel": 15
+      }
+    ],
+    "range": 2,
+    "spriteUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/375.gif",
+    "evolvesTo": "metagross"
   },
 };
 
@@ -4708,6 +6119,17 @@ export const SHOP_POOL_TIER_BASE: string[] = [
   'fennekin',
   'fuecoco',
   'gastly',
+  'aron',
+  'bagon',
+  'beldum',
+  'houndour',
+  'larvitar',
+  'mareep',
+  'phanpy',
+  'ralts',
+  'shroomish',
+  'trapinch',
+  'wooper',
   'grookey',
   'growlithe',
   'heracross',

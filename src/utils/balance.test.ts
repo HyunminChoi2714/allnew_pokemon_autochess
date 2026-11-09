@@ -135,6 +135,7 @@ test('all National Pokedex entries from generations 6 and 7 are present and shop
     assert.ok(species, `missing Gen 6/7 species at National Pokedex #${dex}`);
     const expectedGeneration = dex <= 721 ? 6 : 7;
     assert.equal(species.generation, expectedGeneration, `${species.id} has the wrong generation`);
+    assert.equal(POKEMON_SPECIES[species.id], species, `${species.id} must use its canonical species identifier as the data key`);
     generationCounts[expectedGeneration as 6 | 7] += 1;
     assert.ok(species.possibleMoves.length > 0, `${species.id} should have at least one move`);
     for (const move of species.possibleMoves) {

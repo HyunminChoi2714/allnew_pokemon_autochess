@@ -68,6 +68,7 @@ export interface StatRanks {
 export interface PokemonSpecies {
   id: string;
   pokedexNumber: number;
+  generation?: number;
   name: string; // Korean
   nameEn: string;
   types: PokemonType[];

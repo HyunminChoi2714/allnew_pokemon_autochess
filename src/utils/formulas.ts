@@ -328,7 +328,7 @@ export function calculateExpGained(
   const ratio = (2 * opponentLevel + 10) / (opponentLevel + selfLevel + 10);
   const part2 = Math.pow(ratio, 2.5) + 1;
 
-  const exp = part1 * part2 * 2 * extraBonus;
+  const exp = part1 * part2 * 4 * extraBonus;
   return Math.max(10, Math.round(exp));
 }
 
@@ -337,6 +337,6 @@ export function calculateExpGained(
  */
 export function getRequiredExpForLevel(level: number): number {
   if (level >= 100) return Infinity;
-  // Scaled progressive curve
-  return Math.round(150 * Math.pow(level, 1.4));
+  // Fast, readable progression: early levels should arrive within one or two defeats.
+  return Math.round(70 * Math.pow(level, 1.25));
 }

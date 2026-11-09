@@ -1,0 +1,124 @@
+ID,Name,Name_Ko,Type_1,Type_2,Classification_Info,Classification_Info_Ko,Abilities,Abilities_Ko,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation
+1,Bulbasaur,이상해씨,Grass,Poison,Seed Pok?mon,씨앗포켓몬,Overgrow,심록,45,49,49,65,65,45,1
+2,Ivysaur,이상해풀,Grass,Poison,Seed Pok?mon,씨앗포켓몬,Overgrow,심록,60,62,63,80,80,60,1
+3,Venusaur,이상해꽃,Grass,Poison,Seed Pok?mon,씨앗포켓몬,Overgrow,심록,80,82,83,100,100,80,1
+4,Charmander,파이리,Fire,,Lizard Pok?mon,도마뱀포켓몬,Blaze,맹화,39,52,43,60,50,65,1
+5,Charmeleon,리자드,Fire,,Flame Pok?mon,화염포켓몬,Blaze,맹화,58,64,58,80,65,80,1
+6,Charizard,리자몽,Fire,Flying,Flame Pok?mon,화염포켓몬,Blaze,맹화,78,84,78,109,85,100,1
+7,Squirtle,꼬부기,Water,,Tiny Turtle Pok?mon,아기거북포켓몬,Torrent,급류,44,48,65,50,64,43,1
+8,Wartortle,어니부기,Water,,Turtle Pok?mon,거북포켓몬,Torrent,급류,59,63,80,65,80,58,1
+9,Blastoise,거북왕,Water,,Shellfish Pok?mon,껍질포켓몬,Torrent,급류,79,83,100,85,105,78,1
+10,Caterpie,캐터피,Bug,,Worm Pok?mon,애벌레포켓몬,Shield Dust,인분,45,30,35,20,20,45,1
+11,Metapod,단데기,Bug,,Cocoon Pok?mon,번데기포켓몬,Shed Skin,탈피,50,20,55,25,25,30,1
+12,Butterfree,버터플,Bug,Flying,Butterfly Pok?mon,나비포켓몬,Compound Eyes,복안,60,45,50,90,80,70,1
+13,Weedle,뿔충이,Bug,Poison,Hairy Bug Pok?mon,털벌레포켓몬,Shield Dust,인분,40,35,30,20,20,50,1
+14,Kakuna,딱충이,Bug,Poison,Cocoon Pok?mon,번데기포켓몬,Shed Skin,탈피,45,25,50,25,25,35,1
+15,Beedrill,독침붕,Bug,Poison,Poison Bee Pok?mon,독벌레포켓몬,Swarm,벌레의알림,65,90,40,45,80,75,1
+16,Pidgey,구구,Normal,Flying,Tiny Bird Pok?mon,아기새포켓몬,Keen Eye,날카로운눈,40,45,40,35,35,56,1
+17,Pidgeotto,피전트,Normal,Flying,Bird Pok?mon,새포켓몬,Keen Eye,날카로운눈,63,60,55,50,50,71,1
+18,Pidgeot,피전투스,Normal,Flying,Bird Pok?mon,새포켓몬,Keen Eye,날카로운눈,83,80,75,70,70,101,1
+19,Rattata,꼬렛,Normal,,Mouse Pok?mon,쥐포켓몬,Run Away,도망주,30,56,35,25,35,72,1
+20,Raticate,레트라,Normal,,Mouse Pok?mon,쥐포켓몬,Run Away,도망주,55,81,60,50,70,97,1
+25,Pikachu,피카츄,Electric,,Mouse Pok?mon,쥐포켓몬,Static,정전기,35,55,40,50,50,90,1
+26,Raichu,라이츄,Electric,,Mouse Pok?mon,쥐포켓몬,Static,정전기,60,90,55,90,80,110,1
+39,Jigglypuff,푸린,Normal,Fairy,Balloon Pok?mon,풍선포켓몬,Cute Charm,헤롱헤롱바디,115,45,20,45,25,20,1
+40,Wigglytuff,푸크린,Normal,Fairy,Balloon Pok?mon,풍선포켓몬,Cute Charm,헤롱헤롱바디,140,70,45,85,50,45,1
+52,Meowth,나옹,Normal,,Scratch Cat Pok?mon,전갈고양이포켓몬,Pickup,픽업,40,45,35,40,40,90,1
+53,Persian,페르시온,Normal,,Classy Cat Pok?mon,들고양이포켓몬,Technician,테크니션,65,70,60,65,65,115,1
+54,Psyduck,고라파덕,Water,,Duck Pok?mon,오리포켓몬,Damp,습기,50,52,48,65,50,55,1
+55,Golduck,골덕,Water,,Duck Pok?mon,오리포켓몬,Damp,습기,80,82,78,95,80,85,1
+58,Growlithe,가디,Fire,,Puppy Pok?mon,강아지포켓몬,Intimidate,위협,55,70,45,70,50,60,1
+59,Arcanine,윈디,Fire,,Legendary Pok?mon,전설포켓몬,Intimidate,위협,90,110,80,100,80,95,1
+63,Abra,캐이시,Psychic,,Psi Pok?mon,PSI포켓몬,Synchronize,싱크로,25,20,15,105,55,90,1
+64,Kadabra,윤겔라,Psychic,,Psi Pok?mon,PSI포켓몬,Synchronize,싱크로,40,35,30,120,70,105,1
+65,Alakazam,후딘,Psychic,,Psi Pok?mon,PSI포켓몬,Synchronize,싱크로,55,50,45,135,95,120,1
+66,Machop,알통몬,Fighting,,Superpower Pok?mon,괴력포켓몬,Guts,근성,70,80,50,35,35,35,1
+67,Machoke,근육몬,Fighting,,Superpower Pok?mon,괴력포켓몬,Guts,근성,80,100,70,50,60,45,1
+68,Machamp,괴력몬,Fighting,,Superpower Pok?mon,괴력포켓몬,Guts,근성,90,130,80,65,85,55,1
+92,Gastly,고스,Ghost,Poison,Gas Pok?mon,가스포켓몬,Levitate,부유,30,35,30,100,35,80,1
+93,Haunter,고우스트,Ghost,Poison,Gas Pok?mon,가스포켓몬,Levitate,부유,45,50,45,115,55,95,1
+94,Gengar,팬텀,Ghost,Poison,Shadow Pok?mon,그림자포켓몬,Cursed Body,저주받은바디,60,65,60,130,75,110,1
+95,Onix,롱스톤,Rock,Ground,Rock Snake Pok?mon,바위뱀포켓몬,Rock Head,돌머리,35,45,160,30,45,70,1
+129,Magikarp,잉어킹,Water,,Fish Pok?mon,물고기포켓몬,Swift Swim,쓱쓱,20,10,55,15,20,80,1
+130,Gyarados,갸라도스,Water,Flying,Atrocious Pok?mon,흉악포켓몬,Intimidate,위협,95,125,79,60,100,81,1
+131,Lapras,라프라스,Water,Ice,Transport Pok?mon,탈것포켓몬,Water Absorb,저수,130,85,80,85,95,60,1
+132,Ditto,메타몽,Normal,,Transform Pok?mon,변신포켓몬,Limber,유연,48,48,48,48,48,48,1
+133,Eevee,이브이,Normal,,Evolution Pok?mon,진화포켓몬,Run Away,도망주,55,55,50,45,65,55,1
+134,Vaporeon,샤미드,Water,,Bubble Jet Pok?mon,거품포켓몬,Water Absorb,저수,130,65,60,110,95,65,1
+135,Jolteon,쥬피썬더,Electric,,Lightning Pok?mon,번개포켓몬,Volt Absorb,축전,65,65,60,110,95,130,1
+136,Flareon,부스터,Fire,,Flame Pok?mon,화염포켓몬,Flash Fire,타오르는불꽃,65,130,60,95,110,65,1
+143,Snorlax,잠만보,Normal,,Sleeping Pok?mon,수면포켓몬,Thick Fat,두꺼운지방,160,110,65,65,110,30,1
+144,Articuno,프리저,Ice,Flying,Freeze Pok?mon,냉동포켓몬,Pressure,압박감,90,85,100,95,125,85,1
+145,Zapdos,썬더,Electric,Flying,Electric Pok?mon,전기포켓몬,Pressure,압박감,90,90,85,125,90,100,1
+146,Moltres,파이어,Fire,Flying,Flame Pok?mon,화염포켓몬,Pressure,압박감,90,100,90,125,85,90,1
+147,Dratini,미뇽,Dragon,,Dragon Pok?mon,드래곤포켓몬,Shed Skin,탈피,41,64,45,50,50,50,1
+148,Dragonair,신뇽,Dragon,,Dragon Pok?mon,드래곤포켓몬,Shed Skin,탈피,61,84,65,70,70,70,1
+149,Dragonite,망나뇽,Dragon,Flying,Dragon Pok?mon,드래곤포켓몬,Inner Focus,정신력,91,134,95,100,100,80,1
+150,Mewtwo,뮤츠,Psychic,,Genetic Pok?mon,유전자포켓몬,Pressure,압박감,106,110,90,154,90,130,1
+151,Mew,뮤,Psychic,,New Species Pok?mon,신종포켓몬,Synchronize,싱크로,100,100,100,100,100,100,1
+152,Chikorita,치코리타,Grass,,Leaf Pok?mon,잎사귀포켓몬,Overgrow,심록,45,49,65,49,65,45,2
+155,Cyndaquil,브케인,Fire,,Fire Mouse Pok?mon,불쥐포켓몬,Blaze,맹화,39,52,43,60,50,65,2
+158,Totodile,리아코,Water,,Big Jaw Pok?mon,큰턱포켓몬,Torrent,급류,50,65,64,44,48,43,2
+196,Espeon,에스피,Psychic,,Sun Pok?mon,태양포켓몬,Synchronize,싱크로,65,65,60,130,95,110,2
+197,Umbreon,블래키,Dark,,Moon Pok?mon,달빛포켓몬,Synchronize,싱크로,95,65,110,60,130,65,2
+212,Scizor,핫삼,Bug,Steel,Pincer Pok?mon,집게포켓몬,Technician,테크니션,70,130,100,55,80,65,2
+214,Heracross,헤라크로스,Bug,Fighting,Single Horn Pok?mon,외뿔포켓몬,Guts,근성,80,125,75,40,95,85,2
+248,Tyranitar,마기라스,Rock,Dark,Armor Pok?mon,갑옷포켓몬,Sand Stream,모래날림,100,134,110,95,100,61,2
+249,Lugia,루기아,Psychic,Flying,Diving Pok?mon,잠수포켓몬,Pressure,압박감,106,90,130,90,154,110,2
+250,Ho-Oh,칠색조,Fire,Flying,Rainbow Pok?mon,무지개포켓몬,Pressure,압박감,106,130,90,110,154,90,2
+251,Celebi,세레비,Psychic,Grass,Time Travel Pok?mon,시간이동포켓몬,Natural Cure,자연회복,100,100,100,100,100,100,2
+252,Treecko,나무지기,Grass,,Wood Gecko Pok?mon,나무도마뱀포켓몬,Overgrow,심록,40,45,35,65,55,70,3
+255,Torchic,아차모,Fire,,Chick Pok?mon,병아리포켓몬,Blaze,맹화,45,60,40,70,50,45,3
+258,Mudkip,물짱이,Water,,Mud Fish Pok?mon,갯벌포켓몬,Torrent,급류,50,70,50,50,50,40,3
+282,Gardevoir,가디안,Psychic,Fairy,Embrace Pok?mon,포옹포켓몬,Synchronize,싱크로,68,65,65,125,115,80,3
+373,Salamence,보만다,Dragon,Flying,Dragon Pok?mon,드래곤포켓몬,Intimidate,위협,95,135,80,110,80,100,3
+376,Metagross,메타그로스,Steel,Psychic,Iron Leg Pok?mon,무쇠다리포켓몬,Clear Body,클리어바디,80,135,130,95,90,70,3
+382,Kyogre,가이오가,Water,,Sea Basin Pok?mon,해저포켓몬,Drizzle,잔비,100,100,90,150,140,90,3
+383,Groudon,그란돈,Ground,,Continent Pok?mon,대륙포켓몬,Drought,가뭄,100,150,140,100,90,90,3
+384,Rayquaza,레쿠쟈,Dragon,Flying,Sky High Pok?mon,천공포켓몬,Air Lock,에어록,105,150,90,150,90,95,3
+387,Turtwig,모부기,Grass,,Tiny Turtle Pok?mon,아기거북포켓몬,Overgrow,심록,55,68,64,45,55,31,4
+390,Chimchar,불꽃숭이,Fire,,Chimp Pok?mon,꼬마원숭이포켓몬,Blaze,맹화,44,58,44,58,44,61,4
+393,Piplup,팽도리,Water,,Penguin Pok?mon,펭귄포켓몬,Torrent,급류,53,51,53,61,56,40,4
+445,Garchomp,한카리아스,Dragon,Ground,Mach Pok?mon,마하포켓몬,Sand Veil,모래숨기,108,130,95,80,85,102,4
+448,Lucario,루카리오,Fighting,Steel,Aura Pok?mon,파동포켓몬,Inner Focus,정신력,70,110,70,115,70,90,4
+483,Dialga,디아루가,Steel,Dragon,Temporal Pok?mon,시간포켓몬,Pressure,압박감,100,120,120,150,100,90,4
+484,Palkia,펄기아,Water,Dragon,Spatial Pok?mon,공간포켓몬,Pressure,압박감,90,120,100,150,120,100,4
+487,Giratina,기라티나,Ghost,Dragon,Renegade Pok?mon,반골포켓몬,Pressure,압박감,150,100,120,100,120,90,4
+493,Arceus,아르세우스,Normal,,Alpha Pok?mon,알파포켓몬,Multitype,멀티타입,120,120,120,120,120,120,4
+494,Victini,비크티니,Psychic,Fire,Victory Pok?mon,승리포켓몬,Victory Star,승리의스타,100,100,100,100,100,100,5
+495,Snivy,주리비얀,Grass,,Grass Snake Pok?mon,풀뱀포켓몬,Overgrow,심록,45,45,55,45,55,63,5
+498,Tepig,뚜꾸리,Fire,,Fire Pig Pok?mon,불꽃돼지포켓몬,Blaze,맹화,65,63,45,45,45,45,5
+501,Oshawott,수둥이,Water,,Sea Otter Pok?mon,해달포켓몬,Torrent,급류,55,55,45,63,45,45,5
+571,Zoroark,조로아크,Dark,,Illusion Fox Pok?mon,환영여우포켓몬,Illusion,일루전,60,105,60,120,60,105,5
+635,Hydreigon,삼삼드라,Dark,Dragon,Brutal Pok?mon,흉포포켓몬,Levitate,부유,92,105,90,125,90,98,5
+643,Reshiram,레시라무,Dragon,Fire,Vast White Pok?mon,백양포켓몬,Turboblaze,터보블레이즈,100,120,100,150,120,90,5
+644,Zekrom,제크로무,Dragon,Electric,Deep Black Pok?mon,흑양포켓몬,Teravolt,테라볼티지,100,150,120,120,100,90,5
+646,Kyurem,큐레무,Dragon,Ice,Boundary Pok?mon,경계포켓몬,Pressure,압박감,125,130,90,130,90,95,5
+650,Chespin,도치마론,Grass,,Spiny Nut Pok?mon,가시밤포켓몬,Overgrow,심록,56,61,65,48,45,38,6
+653,Fennekin,푸호꼬,Fire,,Fox Pok?mon,여우포켓몬,Blaze,맹화,40,45,40,62,60,60,6
+658,Greninja,개굴닌자,Water,Dark,Ninja Pok?mon,닌자포켓몬,Torrent,급류,72,95,67,103,71,122,6
+700,Sylveon,님피아,Fairy,,Intertwining Pok?mon,연결포켓몬,Cute Charm,헤롱헤롱바디,95,65,65,110,130,60,6
+716,Xerneas,제르네아스,Fairy,,Life Pok?mon,생명포켓몬,Fairy Aura,페어리오라,126,131,95,131,98,99,6
+717,Yveltal,이벨타르,Dark,Flying,Destruction Pok?mon,파괴포켓몬,Dark Aura,다크오라,126,131,95,131,98,99,6
+718,Zygarde,지가르데,Dragon,Ground,Order Pok?mon,질서포켓몬,Aura Break,오라브레이크,108,100,121,81,95,95,6
+722,Rowlet,나몰빼미,Grass,Flying,Grass Quill Pok?mon,풀깃털포켓몬,Overgrow,심록,68,55,55,50,50,42,7
+725,Litten,냐오불,Fire,,Fire Cat Pok?mon,불꽃고양이포켓몬,Blaze,맹화,45,65,40,60,40,70,7
+728,Popplio,누리공,Water,,Sea Lion Pok?mon,강치포켓몬,Torrent,급류,50,54,54,66,56,40,7
+778,Mimikyu,따라큐,Ghost,Fairy,Disguise Pok?mon,탈포켓몬,Disguise,탈,55,90,80,50,105,96,7
+791,Solgaleo,솔가레오,Psychic,Steel,Sunne Pok?mon,태양포켓몬,Full Metal Body,메탈프로텍트,137,137,107,113,89,97,7
+792,Lunala,루나아라,Psychic,Ghost,Moone Pok?mon,달포켓몬,Shadow Shield,스펙터가드,137,113,89,137,107,97,7
+800,Necrozma,네크로즈마,Psychic,,Prism Pok?mon,프리즘포켓몬,Prism Armor,프리즘아머,97,107,109,127,89,79,7
+810,Grookey,흥나숭,Grass,,Chimp Pok?mon,꼬마원숭이포켓몬,Overgrow,심록,50,65,50,40,40,65,8
+813,Scorbunny,염버니,Fire,,Rabbit Pok?mon,토끼포켓몬,Blaze,맹화,50,71,40,40,40,69,8
+816,Sobble,울머기,Water,,Water Lizard Pok?mon,물도마뱀포켓몬,Torrent,급류,50,40,40,70,40,70,8
+823,Corviknight,아머까오,Flying,Steel,Raven Pok?mon,까마귀포켓몬,Pressure,압박감,98,87,105,53,85,67,8
+888,Zacian,자시안,Fairy,Steel,Warrior Pok?mon,용사포켓몬,Intrepid Sword,불굴의검,92,130,115,80,115,138,8
+889,Zamazenta,자마젠타,Fighting,Steel,Warrior Pok?mon,용사포켓몬,Dauntless Shield,불굴의방패,92,130,115,80,115,138,8
+890,Eternatus,무한다이노,Poison,Dragon,Gigantic Pok?mon,무한포켓몬,Pressure,압박감,140,85,95,145,95,130,8
+906,Sprigatito,나오하,Grass,,Grass Cat Pok?mon,풀고양이포켓몬,Overgrow,심록,40,61,54,45,45,65,9
+909,Fuecoco,뜨아거,Fire,,Fire Croc Pok?mon,불꽃악어포켓몬,Blaze,맹화,67,45,59,63,40,36,9
+912,Quaxly,꾸꾸아,Water,,Duckling Pok?mon,아기오리포켓몬,Torrent,급류,55,65,45,50,45,50,9
+959,Tinkaton,두드짱마귀,Fairy,Steel,Hammer Pok?mon,망치포켓몬,Mold Breaker,틀깨기,85,75,77,70,105,94,9
+1007,Koraidon,코라이돈,Fighting,Dragon,Paradox Pok?mon,패러독스포켓몬,Orichalcum Pulse,진동하는고동,100,135,115,85,100,135,9
+1008,Miraidon,미라이돈,Electric,Dragon,Paradox Pok?mon,패러독스포켓몬,Hadron Engine,하드론엔진,100,85,100,135,115,135,9
+1025,Pecharunt,복숭악동,Poison,Ghost,Subjugation Pok?mon,지배포켓몬,Poison Puppeteer,독사슬,88,88,160,88,88,88,9

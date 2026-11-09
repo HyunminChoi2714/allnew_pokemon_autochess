@@ -265,13 +265,13 @@ export function calculateAveragePlayerLevel(levels: number[]): number {
 }
 
 /**
- * Match every opponent Pokemon to the rounded average level of the player's full roster.
- * No round, boss, or endgame ace receives a level bonus.
+ * Match every opponent Pokemon to the exact average level of the player's full roster.
+ * Fractional averages are preserved; there is no rounding or boss/endgame level bonus.
  */
 export function getOpponentForRound(round: number, playerAverageLevel: number = 1): OpponentTrainer {
   const targetLevel = Math.max(
     1,
-    Math.min(100, Math.round(Number.isFinite(playerAverageLevel) ? playerAverageLevel : 1)),
+    Math.min(100, Number.isFinite(playerAverageLevel) ? playerAverageLevel : 1),
   );
 
   if (round <= OPPONENTS.length) {

@@ -183,8 +183,9 @@ export default function App() {
 
   // Initialize round opponent
   useEffect(() => {
-    setupOpponentForRound(round);
-  }, [round, setupOpponentForRound]);
+    if (phase !== 'planning') return;
+    setupOpponentForRound(round, playerAverageLevel);
+  }, [round, phase, playerAverageLevel, setupOpponentForRound]);
 
   // === Shop Actions ===
   const handleBuyPokemon = (shopIndex: number) => {

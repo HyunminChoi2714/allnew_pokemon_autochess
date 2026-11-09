@@ -265,9 +265,8 @@ export function calculateAveragePlayerLevel(levels: number[]): number {
 }
 
 /**
- * Match every round's opponent levels to the player's current roster average.
- * Boss teams keep a single +1 level ace, while their larger team composition
- * and stronger species provide the round-to-round challenge.
+ * Match every opponent Pokemon to the rounded average level of the player's full roster.
+ * No round, boss, or endgame ace receives a level bonus.
  */
 export function getOpponentForRound(round: number, playerAverageLevel: number = 1): OpponentTrainer {
   const targetLevel = Math.max(
@@ -281,10 +280,7 @@ export function getOpponentForRound(round: number, playerAverageLevel: number = 
       ...opponent,
       team: opponent.team.map((pokemon) => ({
         ...pokemon,
-        level: Math.min(
-          100,
-          targetLevel + (round === 12 && pokemon.speciesId === 'mewtwo' ? 1 : 0),
-        ),
+        level: targetLevel,
       })),
     };
   }
@@ -298,10 +294,10 @@ export function getOpponentForRound(round: number, playerAverageLevel: number = 
     team: [
       { speciesId: 'garchomp', level: targetLevel, row: 3, col: 3, isMega: true },
       { speciesId: 'charizard', level: targetLevel, row: 2, col: 2 },
-      { speciesId: 'mewtwo', level: Math.min(100, targetLevel + 1), row: 1, col: 3 },
+      { speciesId: 'mewtwo', level: targetLevel, row: 1, col: 3 },
       { speciesId: 'dragonite', level: targetLevel, row: 2, col: 4 },
-      { speciesId: 'koraidon', level: Math.min(100, targetLevel + 1), row: 3, col: 1 },
-      { speciesId: 'miraidon', level: Math.min(100, targetLevel + 1), row: 1, col: 5 },
+      { speciesId: 'koraidon', level: targetLevel, row: 3, col: 1 },
+      { speciesId: 'miraidon', level: targetLevel, row: 1, col: 5 },
       { speciesId: 'tinkaton', level: targetLevel, row: 3, col: 5 },
     ],
   };

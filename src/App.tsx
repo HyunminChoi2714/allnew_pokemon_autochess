@@ -23,7 +23,7 @@ import {
 } from './utils/gameEngine';
 import {
   calculateAveragePlayerLevel,
-  createOpponentPokemon,
+  generateOpponentForPlayer,
   getOpponentForRound,
   OpponentTrainer,
 } from './utils/aiOpponents';
@@ -159,32 +159,35 @@ export default function App() {
   // Active synergies
   const synergies = calculateSynergies(deployedPlayerPokemon);
 
-  // Setup opponent team onto top 4 rows of board when planning starts
-  const setupOpponentForRound = useCallback((rNum: number, averageLevel = playerAverageLevelRef.current) => {
-    const opp = getOpponentForRound(rNum, averageLevel);
-    setCurrentOpponent(opp);
+  // Generate opponents from the complete owned roster (board + bench).
+  // This is shared by planning refreshes and the final pre-battle validation.
+  const setupOpponentForRound = useCallback((rNum: number, playerLevels: number[]) => {
+    const generated = generateOpponentForPlayer(rNum, playerLevels);
+    setCurrentOpponent(generated.opponent);
     setBoard((prev) => {
       const next = prev.map((row) => [...row]);
-      // Clear enemy rows (0..3)
+      // Clear every previous enemy before placing the newly generated team.
       for (let r = 0; r < 4; r++) {
         for (let c = 0; c < 7; c++) {
           next[r][c] = null;
         }
       }
-      // Place opponent team
-      for (const t of opp.team) {
-        if (t.row >= 0 && t.row < 4 && t.col >= 0 && t.col < 7) {
-          next[t.row][t.col] = createOpponentPokemon(t.speciesId, t.level, t.row, t.col, t.isMega);
+      for (const enemy of generated.units) {
+        if (enemy.row >= 0 && enemy.row < 4 && enemy.col >= 0 && enemy.col < 7) {
+          next[enemy.row][enemy.col] = enemy;
         }
       }
       return next;
     });
   }, []);
 
-  // Initialize round opponent
+  // Rebuild the opponent whenever the round or the player's average changes.
   useEffect(() => {
     if (phase !== 'planning') return;
-    setupOpponentForRound(round, playerAverageLevel);
+    setupOpponentForRound(
+      round,
+      ownedPlayerPokemon.map((pokemon) => pokemon.level),
+    );
   }, [round, phase, playerAverageLevel, setupOpponentForRound]);
 
   // === Shop Actions ===
@@ -577,6 +580,16 @@ export default function App() {
       return;
     }
 
+    // Recalculate from the live board + bench immediately before combat.
+    // Never trust a previously rendered/planning-phase opponent level.
+    const battleOpponent = generateOpponentForPlayer(
+      round,
+      [...bench, ...board.flat()]
+        .filter((pokemon): pokemon is ActivePokemon => pokemon !== null && pokemon.team === 'player')
+        .map((pokemon) => pokemon.level),
+    );
+    setCurrentOpponent(battleOpponent.opponent);
+
     setPhase('battle');
     isBattleEndingRef.current = false;
     setSelectedUnit(null);
@@ -599,9 +612,17 @@ export default function App() {
     }
     playerTeamSnapshotRef.current = snapshot;
 
-    // Trigger Combat Start Synergies (Water 5-set shield, Rock 3/5 shield, Ghost stealth, etc.)
+    // Install the freshly generated, exact-average enemy team before combat ticks begin.
     setBoard((prev) => {
       const next = prev.map((row) => [...row]);
+      for (let r = 0; r < 4; r++) {
+        for (let c = 0; c < 7; c++) next[r][c] = null;
+      }
+      for (const enemy of battleOpponent.units) {
+        next[enemy.row][enemy.col] = enemy;
+      }
+
+      // Trigger Combat Start Synergies (Water 5-set shield, Rock 3/5 shield, Ghost stealth, etc.)
       for (let r = 0; r < 8; r++) {
         for (let c = 0; c < 7; c++) {
           const p = next[r][c];
@@ -1313,7 +1334,7 @@ export default function App() {
     for (let r = 0; r < 8; r++) newBoard.push(new Array(7).fill(null));
     setBoard(newBoard);
     setBench(new Array(9).fill(null));
-    setupOpponentForRound(1, 1);
+    setupOpponentForRound(1, []);
     addLog('새로운 포켓몬 오토체스 게임이 시작되었습니다!', 'system');
   };
 

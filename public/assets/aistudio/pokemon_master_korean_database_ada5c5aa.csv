@@ -1,124 +1,124 @@
 ID,Name,Name_Ko,Type_1,Type_2,Classification_Info,Classification_Info_Ko,Abilities,Abilities_Ko,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation
-1,Bulbasaur,ÀÌ»óÇØ¾¾,Grass,Poison,Seed Pok?mon,¾¾¾ÑÆ÷ÄÏ¸ó,Overgrow,½É·Ï,45,49,49,65,65,45,1
-2,Ivysaur,ÀÌ»óÇØÇ®,Grass,Poison,Seed Pok?mon,¾¾¾ÑÆ÷ÄÏ¸ó,Overgrow,½É·Ï,60,62,63,80,80,60,1
-3,Venusaur,ÀÌ»óÇØ²É,Grass,Poison,Seed Pok?mon,¾¾¾ÑÆ÷ÄÏ¸ó,Overgrow,½É·Ï,80,82,83,100,100,80,1
-4,Charmander,ÆÄÀÌ¸®,Fire,,Lizard Pok?mon,µµ¸¶¹ìÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,39,52,43,60,50,65,1
-5,Charmeleon,¸®ÀÚµå,Fire,,Flame Pok?mon,È­¿°Æ÷ÄÏ¸ó,Blaze,¸ÍÈ­,58,64,58,80,65,80,1
-6,Charizard,¸®ÀÚ¸ù,Fire,Flying,Flame Pok?mon,È­¿°Æ÷ÄÏ¸ó,Blaze,¸ÍÈ­,78,84,78,109,85,100,1
-7,Squirtle,²¿ºÎ±â,Water,,Tiny Turtle Pok?mon,¾Æ±â°ÅºÏÆ÷ÄÏ¸ó,Torrent,±Þ·ù,44,48,65,50,64,43,1
-8,Wartortle,¾î´ÏºÎ±â,Water,,Turtle Pok?mon,°ÅºÏÆ÷ÄÏ¸ó,Torrent,±Þ·ù,59,63,80,65,80,58,1
-9,Blastoise,°ÅºÏ¿Õ,Water,,Shellfish Pok?mon,²®ÁúÆ÷ÄÏ¸ó,Torrent,±Þ·ù,79,83,100,85,105,78,1
-10,Caterpie,Ä³ÅÍÇÇ,Bug,,Worm Pok?mon,¾Ö¹ú·¹Æ÷ÄÏ¸ó,Shield Dust,ÀÎºÐ,45,30,35,20,20,45,1
-11,Metapod,´Üµ¥±â,Bug,,Cocoon Pok?mon,¹øµ¥±âÆ÷ÄÏ¸ó,Shed Skin,Å»ÇÇ,50,20,55,25,25,30,1
-12,Butterfree,¹öÅÍÇÃ,Bug,Flying,Butterfly Pok?mon,³ªºñÆ÷ÄÏ¸ó,Compound Eyes,º¹¾È,60,45,50,90,80,70,1
-13,Weedle,»ÔÃæÀÌ,Bug,Poison,Hairy Bug Pok?mon,ÅÐ¹ú·¹Æ÷ÄÏ¸ó,Shield Dust,ÀÎºÐ,40,35,30,20,20,50,1
-14,Kakuna,µüÃæÀÌ,Bug,Poison,Cocoon Pok?mon,¹øµ¥±âÆ÷ÄÏ¸ó,Shed Skin,Å»ÇÇ,45,25,50,25,25,35,1
-15,Beedrill,µ¶Ä§ºØ,Bug,Poison,Poison Bee Pok?mon,µ¶¹ú·¹Æ÷ÄÏ¸ó,Swarm,¹ú·¹ÀÇ¾Ë¸²,65,90,40,45,80,75,1
-16,Pidgey,±¸±¸,Normal,Flying,Tiny Bird Pok?mon,¾Æ±â»õÆ÷ÄÏ¸ó,Keen Eye,³¯Ä«·Î¿î´«,40,45,40,35,35,56,1
-17,Pidgeotto,ÇÇÀüÆ®,Normal,Flying,Bird Pok?mon,»õÆ÷ÄÏ¸ó,Keen Eye,³¯Ä«·Î¿î´«,63,60,55,50,50,71,1
-18,Pidgeot,ÇÇÀüÅõ½º,Normal,Flying,Bird Pok?mon,»õÆ÷ÄÏ¸ó,Keen Eye,³¯Ä«·Î¿î´«,83,80,75,70,70,101,1
-19,Rattata,²¿·¿,Normal,,Mouse Pok?mon,ÁãÆ÷ÄÏ¸ó,Run Away,µµ¸ÁÁÖ,30,56,35,25,35,72,1
-20,Raticate,·¹Æ®¶ó,Normal,,Mouse Pok?mon,ÁãÆ÷ÄÏ¸ó,Run Away,µµ¸ÁÁÖ,55,81,60,50,70,97,1
-25,Pikachu,ÇÇÄ«Ãò,Electric,,Mouse Pok?mon,ÁãÆ÷ÄÏ¸ó,Static,Á¤Àü±â,35,55,40,50,50,90,1
-26,Raichu,¶óÀÌÃò,Electric,,Mouse Pok?mon,ÁãÆ÷ÄÏ¸ó,Static,Á¤Àü±â,60,90,55,90,80,110,1
-39,Jigglypuff,Çª¸°,Normal,Fairy,Balloon Pok?mon,Ç³¼±Æ÷ÄÏ¸ó,Cute Charm,Çì·ÕÇì·Õ¹Ùµð,115,45,20,45,25,20,1
-40,Wigglytuff,ÇªÅ©¸°,Normal,Fairy,Balloon Pok?mon,Ç³¼±Æ÷ÄÏ¸ó,Cute Charm,Çì·ÕÇì·Õ¹Ùµð,140,70,45,85,50,45,1
-52,Meowth,³ª¿Ë,Normal,,Scratch Cat Pok?mon,Àü°¥°í¾çÀÌÆ÷ÄÏ¸ó,Pickup,ÇÈ¾÷,40,45,35,40,40,90,1
-53,Persian,Æä¸£½Ã¿Â,Normal,,Classy Cat Pok?mon,µé°í¾çÀÌÆ÷ÄÏ¸ó,Technician,Å×Å©´Ï¼Ç,65,70,60,65,65,115,1
-54,Psyduck,°í¶óÆÄ´ö,Water,,Duck Pok?mon,¿À¸®Æ÷ÄÏ¸ó,Damp,½À±â,50,52,48,65,50,55,1
-55,Golduck,°ñ´ö,Water,,Duck Pok?mon,¿À¸®Æ÷ÄÏ¸ó,Damp,½À±â,80,82,78,95,80,85,1
-58,Growlithe,°¡µð,Fire,,Puppy Pok?mon,°­¾ÆÁöÆ÷ÄÏ¸ó,Intimidate,À§Çù,55,70,45,70,50,60,1
-59,Arcanine,À©µð,Fire,,Legendary Pok?mon,Àü¼³Æ÷ÄÏ¸ó,Intimidate,À§Çù,90,110,80,100,80,95,1
-63,Abra,Ä³ÀÌ½Ã,Psychic,,Psi Pok?mon,PSIÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,25,20,15,105,55,90,1
-64,Kadabra,À±°Ö¶ó,Psychic,,Psi Pok?mon,PSIÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,40,35,30,120,70,105,1
-65,Alakazam,ÈÄµò,Psychic,,Psi Pok?mon,PSIÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,55,50,45,135,95,120,1
-66,Machop,¾ËÅë¸ó,Fighting,,Superpower Pok?mon,±«·ÂÆ÷ÄÏ¸ó,Guts,±Ù¼º,70,80,50,35,35,35,1
-67,Machoke,±ÙÀ°¸ó,Fighting,,Superpower Pok?mon,±«·ÂÆ÷ÄÏ¸ó,Guts,±Ù¼º,80,100,70,50,60,45,1
-68,Machamp,±«·Â¸ó,Fighting,,Superpower Pok?mon,±«·ÂÆ÷ÄÏ¸ó,Guts,±Ù¼º,90,130,80,65,85,55,1
-92,Gastly,°í½º,Ghost,Poison,Gas Pok?mon,°¡½ºÆ÷ÄÏ¸ó,Levitate,ºÎÀ¯,30,35,30,100,35,80,1
-93,Haunter,°í¿ì½ºÆ®,Ghost,Poison,Gas Pok?mon,°¡½ºÆ÷ÄÏ¸ó,Levitate,ºÎÀ¯,45,50,45,115,55,95,1
-94,Gengar,ÆÒÅÒ,Ghost,Poison,Shadow Pok?mon,±×¸²ÀÚÆ÷ÄÏ¸ó,Cursed Body,ÀúÁÖ¹ÞÀº¹Ùµð,60,65,60,130,75,110,1
-95,Onix,·Õ½ºÅæ,Rock,Ground,Rock Snake Pok?mon,¹ÙÀ§¹ìÆ÷ÄÏ¸ó,Rock Head,µ¹¸Ó¸®,35,45,160,30,45,70,1
-129,Magikarp,À×¾îÅ·,Water,,Fish Pok?mon,¹°°í±âÆ÷ÄÏ¸ó,Swift Swim,¾³¾³,20,10,55,15,20,80,1
-130,Gyarados,°¼¶óµµ½º,Water,Flying,Atrocious Pok?mon,Èä¾ÇÆ÷ÄÏ¸ó,Intimidate,À§Çù,95,125,79,60,100,81,1
-131,Lapras,¶óÇÁ¶ó½º,Water,Ice,Transport Pok?mon,Å»°ÍÆ÷ÄÏ¸ó,Water Absorb,Àú¼ö,130,85,80,85,95,60,1
-132,Ditto,¸ÞÅ¸¸ù,Normal,,Transform Pok?mon,º¯½ÅÆ÷ÄÏ¸ó,Limber,À¯¿¬,48,48,48,48,48,48,1
-133,Eevee,ÀÌºêÀÌ,Normal,,Evolution Pok?mon,ÁøÈ­Æ÷ÄÏ¸ó,Run Away,µµ¸ÁÁÖ,55,55,50,45,65,55,1
-134,Vaporeon,»þ¹Ìµå,Water,,Bubble Jet Pok?mon,°ÅÇ°Æ÷ÄÏ¸ó,Water Absorb,Àú¼ö,130,65,60,110,95,65,1
-135,Jolteon,ÁêÇÇ½ã´õ,Electric,,Lightning Pok?mon,¹ø°³Æ÷ÄÏ¸ó,Volt Absorb,ÃàÀü,65,65,60,110,95,130,1
-136,Flareon,ºÎ½ºÅÍ,Fire,,Flame Pok?mon,È­¿°Æ÷ÄÏ¸ó,Flash Fire,Å¸¿À¸£´ÂºÒ²É,65,130,60,95,110,65,1
-143,Snorlax,Àá¸¸º¸,Normal,,Sleeping Pok?mon,¼ö¸éÆ÷ÄÏ¸ó,Thick Fat,µÎ²¨¿îÁö¹æ,160,110,65,65,110,30,1
-144,Articuno,ÇÁ¸®Àú,Ice,Flying,Freeze Pok?mon,³Ãµ¿Æ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,90,85,100,95,125,85,1
-145,Zapdos,½ã´õ,Electric,Flying,Electric Pok?mon,Àü±âÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,90,90,85,125,90,100,1
-146,Moltres,ÆÄÀÌ¾î,Fire,Flying,Flame Pok?mon,È­¿°Æ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,90,100,90,125,85,90,1
-147,Dratini,¹Ì´¨,Dragon,,Dragon Pok?mon,µå·¡°ïÆ÷ÄÏ¸ó,Shed Skin,Å»ÇÇ,41,64,45,50,50,50,1
-148,Dragonair,½Å´¨,Dragon,,Dragon Pok?mon,µå·¡°ïÆ÷ÄÏ¸ó,Shed Skin,Å»ÇÇ,61,84,65,70,70,70,1
-149,Dragonite,¸Á³ª´¨,Dragon,Flying,Dragon Pok?mon,µå·¡°ïÆ÷ÄÏ¸ó,Inner Focus,Á¤½Å·Â,91,134,95,100,100,80,1
-150,Mewtwo,¹ÂÃ÷,Psychic,,Genetic Pok?mon,À¯ÀüÀÚÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,106,110,90,154,90,130,1
-151,Mew,¹Â,Psychic,,New Species Pok?mon,½ÅÁ¾Æ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,100,100,100,100,100,100,1
-152,Chikorita,Ä¡ÄÚ¸®Å¸,Grass,,Leaf Pok?mon,ÀÙ»ç±ÍÆ÷ÄÏ¸ó,Overgrow,½É·Ï,45,49,65,49,65,45,2
-155,Cyndaquil,ºêÄÉÀÎ,Fire,,Fire Mouse Pok?mon,ºÒÁãÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,39,52,43,60,50,65,2
-158,Totodile,¸®¾ÆÄÚ,Water,,Big Jaw Pok?mon,Å«ÅÎÆ÷ÄÏ¸ó,Torrent,±Þ·ù,50,65,64,44,48,43,2
-196,Espeon,¿¡½ºÇÇ,Psychic,,Sun Pok?mon,ÅÂ¾çÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,65,65,60,130,95,110,2
-197,Umbreon,ºí·¡Å°,Dark,,Moon Pok?mon,´ÞºûÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,95,65,110,60,130,65,2
-212,Scizor,ÇÖ»ï,Bug,Steel,Pincer Pok?mon,Áý°ÔÆ÷ÄÏ¸ó,Technician,Å×Å©´Ï¼Ç,70,130,100,55,80,65,2
-214,Heracross,Çì¶óÅ©·Î½º,Bug,Fighting,Single Horn Pok?mon,¿Ü»ÔÆ÷ÄÏ¸ó,Guts,±Ù¼º,80,125,75,40,95,85,2
-248,Tyranitar,¸¶±â¶ó½º,Rock,Dark,Armor Pok?mon,°©¿ÊÆ÷ÄÏ¸ó,Sand Stream,¸ð·¡³¯¸²,100,134,110,95,100,61,2
-249,Lugia,·ç±â¾Æ,Psychic,Flying,Diving Pok?mon,Àá¼öÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,106,90,130,90,154,110,2
-250,Ho-Oh,Ä¥»öÁ¶,Fire,Flying,Rainbow Pok?mon,¹«Áö°³Æ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,106,130,90,110,154,90,2
-251,Celebi,¼¼·¹ºñ,Psychic,Grass,Time Travel Pok?mon,½Ã°£ÀÌµ¿Æ÷ÄÏ¸ó,Natural Cure,ÀÚ¿¬È¸º¹,100,100,100,100,100,100,2
-252,Treecko,³ª¹«Áö±â,Grass,,Wood Gecko Pok?mon,³ª¹«µµ¸¶¹ìÆ÷ÄÏ¸ó,Overgrow,½É·Ï,40,45,35,65,55,70,3
-255,Torchic,¾ÆÂ÷¸ð,Fire,,Chick Pok?mon,º´¾Æ¸®Æ÷ÄÏ¸ó,Blaze,¸ÍÈ­,45,60,40,70,50,45,3
-258,Mudkip,¹°Â¯ÀÌ,Water,,Mud Fish Pok?mon,°¹¹úÆ÷ÄÏ¸ó,Torrent,±Þ·ù,50,70,50,50,50,40,3
-282,Gardevoir,°¡µð¾È,Psychic,Fairy,Embrace Pok?mon,Æ÷¿ËÆ÷ÄÏ¸ó,Synchronize,½ÌÅ©·Î,68,65,65,125,115,80,3
-373,Salamence,º¸¸¸´Ù,Dragon,Flying,Dragon Pok?mon,µå·¡°ïÆ÷ÄÏ¸ó,Intimidate,À§Çù,95,135,80,110,80,100,3
-376,Metagross,¸ÞÅ¸±×·Î½º,Steel,Psychic,Iron Leg Pok?mon,¹«¼è´Ù¸®Æ÷ÄÏ¸ó,Clear Body,Å¬¸®¾î¹Ùµð,80,135,130,95,90,70,3
-382,Kyogre,°¡ÀÌ¿À°¡,Water,,Sea Basin Pok?mon,ÇØÀúÆ÷ÄÏ¸ó,Drizzle,ÀÜºñ,100,100,90,150,140,90,3
-383,Groudon,±×¶õµ·,Ground,,Continent Pok?mon,´ë·úÆ÷ÄÏ¸ó,Drought,°¡¹³,100,150,140,100,90,90,3
-384,Rayquaza,·¹ÄíÀð,Dragon,Flying,Sky High Pok?mon,Ãµ°øÆ÷ÄÏ¸ó,Air Lock,¿¡¾î·Ï,105,150,90,150,90,95,3
-387,Turtwig,¸ðºÎ±â,Grass,,Tiny Turtle Pok?mon,¾Æ±â°ÅºÏÆ÷ÄÏ¸ó,Overgrow,½É·Ï,55,68,64,45,55,31,4
-390,Chimchar,ºÒ²É¼þÀÌ,Fire,,Chimp Pok?mon,²¿¸¶¿ø¼þÀÌÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,44,58,44,58,44,61,4
-393,Piplup,ÆØµµ¸®,Water,,Penguin Pok?mon,Æë±ÏÆ÷ÄÏ¸ó,Torrent,±Þ·ù,53,51,53,61,56,40,4
-445,Garchomp,ÇÑÄ«¸®¾Æ½º,Dragon,Ground,Mach Pok?mon,¸¶ÇÏÆ÷ÄÏ¸ó,Sand Veil,¸ð·¡¼û±â,108,130,95,80,85,102,4
-448,Lucario,·çÄ«¸®¿À,Fighting,Steel,Aura Pok?mon,ÆÄµ¿Æ÷ÄÏ¸ó,Inner Focus,Á¤½Å·Â,70,110,70,115,70,90,4
-483,Dialga,µð¾Æ·ç°¡,Steel,Dragon,Temporal Pok?mon,½Ã°£Æ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,100,120,120,150,100,90,4
-484,Palkia,ÆÞ±â¾Æ,Water,Dragon,Spatial Pok?mon,°ø°£Æ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,90,120,100,150,120,100,4
-487,Giratina,±â¶óÆ¼³ª,Ghost,Dragon,Renegade Pok?mon,¹Ý°ñÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,150,100,120,100,120,90,4
-493,Arceus,¾Æ¸£¼¼¿ì½º,Normal,,Alpha Pok?mon,¾ËÆÄÆ÷ÄÏ¸ó,Multitype,¸ÖÆ¼Å¸ÀÔ,120,120,120,120,120,120,4
-494,Victini,ºñÅ©Æ¼´Ï,Psychic,Fire,Victory Pok?mon,½Â¸®Æ÷ÄÏ¸ó,Victory Star,½Â¸®ÀÇ½ºÅ¸,100,100,100,100,100,100,5
-495,Snivy,ÁÖ¸®ºñ¾á,Grass,,Grass Snake Pok?mon,Ç®¹ìÆ÷ÄÏ¸ó,Overgrow,½É·Ï,45,45,55,45,55,63,5
-498,Tepig,¶Ñ²Ù¸®,Fire,,Fire Pig Pok?mon,ºÒ²ÉµÅÁöÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,65,63,45,45,45,45,5
-501,Oshawott,¼öµÕÀÌ,Water,,Sea Otter Pok?mon,ÇØ´ÞÆ÷ÄÏ¸ó,Torrent,±Þ·ù,55,55,45,63,45,45,5
-571,Zoroark,Á¶·Î¾ÆÅ©,Dark,,Illusion Fox Pok?mon,È¯¿µ¿©¿ìÆ÷ÄÏ¸ó,Illusion,ÀÏ·çÀü,60,105,60,120,60,105,5
-635,Hydreigon,»ï»ïµå¶ó,Dark,Dragon,Brutal Pok?mon,ÈäÆ÷Æ÷ÄÏ¸ó,Levitate,ºÎÀ¯,92,105,90,125,90,98,5
-643,Reshiram,·¹½Ã¶ó¹«,Dragon,Fire,Vast White Pok?mon,¹é¾çÆ÷ÄÏ¸ó,Turboblaze,ÅÍº¸ºí·¹ÀÌÁî,100,120,100,150,120,90,5
-644,Zekrom,Á¦Å©·Î¹«,Dragon,Electric,Deep Black Pok?mon,Èæ¾çÆ÷ÄÏ¸ó,Teravolt,Å×¶óº¼Æ¼Áö,100,150,120,120,100,90,5
-646,Kyurem,Å¥·¹¹«,Dragon,Ice,Boundary Pok?mon,°æ°èÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,125,130,90,130,90,95,5
-650,Chespin,µµÄ¡¸¶·Ð,Grass,,Spiny Nut Pok?mon,°¡½Ã¹ãÆ÷ÄÏ¸ó,Overgrow,½É·Ï,56,61,65,48,45,38,6
-653,Fennekin,ÇªÈ£²¿,Fire,,Fox Pok?mon,¿©¿ìÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,40,45,40,62,60,60,6
-658,Greninja,°³±¼´ÑÀÚ,Water,Dark,Ninja Pok?mon,´ÑÀÚÆ÷ÄÏ¸ó,Torrent,±Þ·ù,72,95,67,103,71,122,6
-700,Sylveon,´ÔÇÇ¾Æ,Fairy,,Intertwining Pok?mon,¿¬°áÆ÷ÄÏ¸ó,Cute Charm,Çì·ÕÇì·Õ¹Ùµð,95,65,65,110,130,60,6
-716,Xerneas,Á¦¸£³×¾Æ½º,Fairy,,Life Pok?mon,»ý¸íÆ÷ÄÏ¸ó,Fairy Aura,Æä¾î¸®¿À¶ó,126,131,95,131,98,99,6
-717,Yveltal,ÀÌº§Å¸¸£,Dark,Flying,Destruction Pok?mon,ÆÄ±«Æ÷ÄÏ¸ó,Dark Aura,´ÙÅ©¿À¶ó,126,131,95,131,98,99,6
-718,Zygarde,Áö°¡¸£µ¥,Dragon,Ground,Order Pok?mon,Áú¼­Æ÷ÄÏ¸ó,Aura Break,¿À¶óºê·¹ÀÌÅ©,108,100,121,81,95,95,6
-722,Rowlet,³ª¸ô»©¹Ì,Grass,Flying,Grass Quill Pok?mon,Ç®±êÅÐÆ÷ÄÏ¸ó,Overgrow,½É·Ï,68,55,55,50,50,42,7
-725,Litten,³Ä¿ÀºÒ,Fire,,Fire Cat Pok?mon,ºÒ²É°í¾çÀÌÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,45,65,40,60,40,70,7
-728,Popplio,´©¸®°ø,Water,,Sea Lion Pok?mon,°­Ä¡Æ÷ÄÏ¸ó,Torrent,±Þ·ù,50,54,54,66,56,40,7
-778,Mimikyu,µû¶óÅ¥,Ghost,Fairy,Disguise Pok?mon,Å»Æ÷ÄÏ¸ó,Disguise,Å»,55,90,80,50,105,96,7
-791,Solgaleo,¼Ö°¡·¹¿À,Psychic,Steel,Sunne Pok?mon,ÅÂ¾çÆ÷ÄÏ¸ó,Full Metal Body,¸ÞÅ»ÇÁ·ÎÅØÆ®,137,137,107,113,89,97,7
-792,Lunala,·ç³ª¾Æ¶ó,Psychic,Ghost,Moone Pok?mon,´ÞÆ÷ÄÏ¸ó,Shadow Shield,½ºÆåÅÍ°¡µå,137,113,89,137,107,97,7
-800,Necrozma,³×Å©·ÎÁî¸¶,Psychic,,Prism Pok?mon,ÇÁ¸®ÁòÆ÷ÄÏ¸ó,Prism Armor,ÇÁ¸®Áò¾Æ¸Ó,97,107,109,127,89,79,7
-810,Grookey,Èï³ª¼þ,Grass,,Chimp Pok?mon,²¿¸¶¿ø¼þÀÌÆ÷ÄÏ¸ó,Overgrow,½É·Ï,50,65,50,40,40,65,8
-813,Scorbunny,¿°¹ö´Ï,Fire,,Rabbit Pok?mon,Åä³¢Æ÷ÄÏ¸ó,Blaze,¸ÍÈ­,50,71,40,40,40,69,8
-816,Sobble,¿ï¸Ó±â,Water,,Water Lizard Pok?mon,¹°µµ¸¶¹ìÆ÷ÄÏ¸ó,Torrent,±Þ·ù,50,40,40,70,40,70,8
-823,Corviknight,¾Æ¸Ó±î¿À,Flying,Steel,Raven Pok?mon,±î¸¶±ÍÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,98,87,105,53,85,67,8
-888,Zacian,ÀÚ½Ã¾È,Fairy,Steel,Warrior Pok?mon,¿ë»çÆ÷ÄÏ¸ó,Intrepid Sword,ºÒ±¼ÀÇ°Ë,92,130,115,80,115,138,8
-889,Zamazenta,ÀÚ¸¶Á¨Å¸,Fighting,Steel,Warrior Pok?mon,¿ë»çÆ÷ÄÏ¸ó,Dauntless Shield,ºÒ±¼ÀÇ¹æÆÐ,92,130,115,80,115,138,8
-890,Eternatus,¹«ÇÑ´ÙÀÌ³ë,Poison,Dragon,Gigantic Pok?mon,¹«ÇÑÆ÷ÄÏ¸ó,Pressure,¾Ð¹Ú°¨,140,85,95,145,95,130,8
-906,Sprigatito,³ª¿ÀÇÏ,Grass,,Grass Cat Pok?mon,Ç®°í¾çÀÌÆ÷ÄÏ¸ó,Overgrow,½É·Ï,40,61,54,45,45,65,9
-909,Fuecoco,¶ß¾Æ°Å,Fire,,Fire Croc Pok?mon,ºÒ²É¾Ç¾îÆ÷ÄÏ¸ó,Blaze,¸ÍÈ­,67,45,59,63,40,36,9
-912,Quaxly,²Ù²Ù¾Æ,Water,,Duckling Pok?mon,¾Æ±â¿À¸®Æ÷ÄÏ¸ó,Torrent,±Þ·ù,55,65,45,50,45,50,9
-959,Tinkaton,µÎµåÂ¯¸¶±Í,Fairy,Steel,Hammer Pok?mon,¸ÁÄ¡Æ÷ÄÏ¸ó,Mold Breaker,Æ²±ú±â,85,75,77,70,105,94,9
-1007,Koraidon,ÄÚ¶óÀÌµ·,Fighting,Dragon,Paradox Pok?mon,ÆÐ·¯µ¶½ºÆ÷ÄÏ¸ó,Orichalcum Pulse,Áøµ¿ÇÏ´Â°íµ¿,100,135,115,85,100,135,9
-1008,Miraidon,¹Ì¶óÀÌµ·,Electric,Dragon,Paradox Pok?mon,ÆÐ·¯µ¶½ºÆ÷ÄÏ¸ó,Hadron Engine,ÇÏµå·Ð¿£Áø,100,85,100,135,115,135,9
-1025,Pecharunt,º¹¼þ¾Çµ¿,Poison,Ghost,Subjugation Pok?mon,Áö¹èÆ÷ÄÏ¸ó,Poison Puppeteer,µ¶»ç½½,88,88,160,88,88,88,9
+1,Bulbasaur,ï¿½Ì»ï¿½ï¿½Ø¾ï¿½,Grass,Poison,Seed Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,45,49,49,65,65,45,1
+2,Ivysaur,ï¿½Ì»ï¿½ï¿½ï¿½Ç®,Grass,Poison,Seed Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,60,62,63,80,80,60,1
+3,Venusaur,ï¿½Ì»ï¿½ï¿½Ø²ï¿½,Grass,Poison,Seed Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,80,82,83,100,100,80,1
+4,Charmander,ï¿½ï¿½ï¿½Ì¸ï¿½,Fire,,Lizard Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,39,52,43,60,50,65,1
+5,Charmeleon,ï¿½ï¿½ï¿½Úµï¿½,Fire,,Flame Pok?mon,È­ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,58,64,58,80,65,80,1
+6,Charizard,ï¿½ï¿½ï¿½Ú¸ï¿½,Fire,Flying,Flame Pok?mon,È­ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,78,84,78,109,85,100,1
+7,Squirtle,ï¿½ï¿½ï¿½Î±ï¿½,Water,,Tiny Turtle Pok?mon,ï¿½Æ±ï¿½Åºï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,44,48,65,50,64,43,1
+8,Wartortle,ï¿½ï¿½ÏºÎ±ï¿½,Water,,Turtle Pok?mon,ï¿½Åºï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,59,63,80,65,80,58,1
+9,Blastoise,ï¿½ÅºÏ¿ï¿½,Water,,Shellfish Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,79,83,100,85,105,78,1
+10,Caterpie,Ä³ï¿½ï¿½ï¿½ï¿½,Bug,,Worm Pok?mon,ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shield Dust,ï¿½Îºï¿½,45,30,35,20,20,45,1
+11,Metapod,ï¿½Üµï¿½ï¿½ï¿½,Bug,,Cocoon Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shed Skin,Å»ï¿½ï¿½,50,20,55,25,25,30,1
+12,Butterfree,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Bug,Flying,Butterfly Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Compound Eyes,ï¿½ï¿½ï¿½ï¿½,60,45,50,90,80,70,1
+13,Weedle,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Bug,Poison,Hairy Bug Pok?mon,ï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shield Dust,ï¿½Îºï¿½,40,35,30,20,20,50,1
+14,Kakuna,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Bug,Poison,Cocoon Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shed Skin,Å»ï¿½ï¿½,45,25,50,25,25,35,1
+15,Beedrill,ï¿½ï¿½Ä§ï¿½ï¿½,Bug,Poison,Poison Bee Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Swarm,ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾Ë¸ï¿½,65,90,40,45,80,75,1
+16,Pidgey,ï¿½ï¿½ï¿½ï¿½,Normal,Flying,Tiny Bird Pok?mon,ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Keen Eye,ï¿½ï¿½Ä«ï¿½Î¿î´«,40,45,40,35,35,56,1
+17,Pidgeotto,ï¿½ï¿½ï¿½ï¿½Æ®,Normal,Flying,Bird Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Keen Eye,ï¿½ï¿½Ä«ï¿½Î¿î´«,63,60,55,50,50,71,1
+18,Pidgeot,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Normal,Flying,Bird Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Keen Eye,ï¿½ï¿½Ä«ï¿½Î¿î´«,83,80,75,70,70,101,1
+19,Rattata,ï¿½ï¿½ï¿½ï¿½,Normal,,Mouse Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Run Away,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,30,56,35,25,35,72,1
+20,Raticate,ï¿½ï¿½Æ®ï¿½ï¿½,Normal,,Mouse Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Run Away,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,55,81,60,50,70,97,1
+25,Pikachu,ï¿½ï¿½Ä«ï¿½ï¿½,Electric,,Mouse Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Static,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,35,55,40,50,50,90,1
+26,Raichu,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Electric,,Mouse Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Static,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,60,90,55,90,80,110,1
+39,Jigglypuff,Çªï¿½ï¿½,Normal,Fairy,Balloon Pok?mon,Ç³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Cute Charm,ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Ùµï¿½,115,45,20,45,25,20,1
+40,Wigglytuff,ÇªÅ©ï¿½ï¿½,Normal,Fairy,Balloon Pok?mon,Ç³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Cute Charm,ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Ùµï¿½,140,70,45,85,50,45,1
+52,Meowth,ï¿½ï¿½ï¿½ï¿½,Normal,,Scratch Cat Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pickup,ï¿½È¾ï¿½,40,45,35,40,40,90,1
+53,Persian,ï¿½ä¸£ï¿½Ã¿ï¿½,Normal,,Classy Cat Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Technician,ï¿½ï¿½Å©ï¿½Ï¼ï¿½,65,70,60,65,65,115,1
+54,Psyduck,ï¿½ï¿½ï¿½ï¿½Ä´ï¿½,Water,,Duck Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Damp,ï¿½ï¿½ï¿½ï¿½,50,52,48,65,50,55,1
+55,Golduck,ï¿½ï¿½ï¿½,Water,,Duck Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Damp,ï¿½ï¿½ï¿½ï¿½,80,82,78,95,80,85,1
+58,Growlithe,ï¿½ï¿½ï¿½ï¿½,Fire,,Puppy Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Intimidate,ï¿½ï¿½ï¿½ï¿½,55,70,45,70,50,60,1
+59,Arcanine,ï¿½ï¿½ï¿½ï¿½,Fire,,Legendary Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Intimidate,ï¿½ï¿½ï¿½ï¿½,90,110,80,100,80,95,1
+63,Abra,Ä³ï¿½Ì½ï¿½,Psychic,,Psi Pok?mon,PSIï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,25,20,15,105,55,90,1
+64,Kadabra,ï¿½ï¿½ï¿½Ö¶ï¿½,Psychic,,Psi Pok?mon,PSIï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,40,35,30,120,70,105,1
+65,Alakazam,ï¿½Äµï¿½,Psychic,,Psi Pok?mon,PSIï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,55,50,45,135,95,120,1
+66,Machop,ï¿½ï¿½ï¿½ï¿½ï¿½,Fighting,,Superpower Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Guts,ï¿½Ù¼ï¿½,70,80,50,35,35,35,1
+67,Machoke,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Fighting,,Superpower Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Guts,ï¿½Ù¼ï¿½,80,100,70,50,60,45,1
+68,Machamp,ï¿½ï¿½ï¿½Â¸ï¿½,Fighting,,Superpower Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Guts,ï¿½Ù¼ï¿½,90,130,80,65,85,55,1
+92,Gastly,ï¿½ï¿½,Ghost,Poison,Gas Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Levitate,ï¿½ï¿½ï¿½ï¿½,30,35,30,100,35,80,1
+93,Haunter,ï¿½ï¿½ì½ºÆ®,Ghost,Poison,Gas Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Levitate,ï¿½ï¿½ï¿½ï¿½,45,50,45,115,55,95,1
+94,Gengar,ï¿½ï¿½ï¿½ï¿½,Ghost,Poison,Shadow Pok?mon,ï¿½×¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Cursed Body,ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ùµï¿½,60,65,60,130,75,110,1
+95,Onix,ï¿½Õ½ï¿½ï¿½ï¿½,Rock,Ground,Rock Snake Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Rock Head,ï¿½ï¿½ï¿½Ó¸ï¿½,35,45,160,30,45,70,1
+129,Magikarp,ï¿½×¾ï¿½Å·,Water,,Fish Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Swift Swim,ï¿½ï¿½ï¿½ï¿½,20,10,55,15,20,80,1
+130,Gyarados,ï¿½ï¿½ï¿½óµµ½ï¿½,Water,Flying,Atrocious Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Intimidate,ï¿½ï¿½ï¿½ï¿½,95,125,79,60,100,81,1
+131,Lapras,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Water,Ice,Transport Pok?mon,Å»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Water Absorb,ï¿½ï¿½ï¿½ï¿½,130,85,80,85,95,60,1
+132,Ditto,ï¿½ï¿½Å¸ï¿½ï¿½,Normal,,Transform Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Limber,ï¿½ï¿½ï¿½ï¿½,48,48,48,48,48,48,1
+133,Eevee,ï¿½Ìºï¿½ï¿½ï¿½,Normal,,Evolution Pok?mon,ï¿½ï¿½È­ï¿½ï¿½ï¿½Ï¸ï¿½,Run Away,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,55,55,50,45,65,55,1
+134,Vaporeon,ï¿½ï¿½ï¿½Ìµï¿½,Water,,Bubble Jet Pok?mon,ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ï¸ï¿½,Water Absorb,ï¿½ï¿½ï¿½ï¿½,130,65,60,110,95,65,1
+135,Jolteon,ï¿½ï¿½ï¿½Ç½ï¿½ï¿½,Electric,,Lightning Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Volt Absorb,ï¿½ï¿½ï¿½ï¿½,65,65,60,110,95,130,1
+136,Flareon,ï¿½Î½ï¿½ï¿½ï¿½,Fire,,Flame Pok?mon,È­ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Flash Fire,Å¸ï¿½ï¿½ï¿½ï¿½ï¿½ÂºÒ²ï¿½,65,130,60,95,110,65,1
+143,Snorlax,ï¿½á¸¸ï¿½ï¿½,Normal,,Sleeping Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Thick Fat,ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,160,110,65,65,110,30,1
+144,Articuno,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Ice,Flying,Freeze Pok?mon,ï¿½Ãµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,90,85,100,95,125,85,1
+145,Zapdos,ï¿½ï¿½ï¿½,Electric,Flying,Electric Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,90,90,85,125,90,100,1
+146,Moltres,ï¿½ï¿½ï¿½Ì¾ï¿½,Fire,Flying,Flame Pok?mon,È­ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,90,100,90,125,85,90,1
+147,Dratini,ï¿½Ì´ï¿½,Dragon,,Dragon Pok?mon,ï¿½å·¡ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shed Skin,Å»ï¿½ï¿½,41,64,45,50,50,50,1
+148,Dragonair,ï¿½Å´ï¿½,Dragon,,Dragon Pok?mon,ï¿½å·¡ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shed Skin,Å»ï¿½ï¿½,61,84,65,70,70,70,1
+149,Dragonite,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Dragon,Flying,Dragon Pok?mon,ï¿½å·¡ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Inner Focus,ï¿½ï¿½ï¿½Å·ï¿½,91,134,95,100,100,80,1
+150,Mewtwo,ï¿½ï¿½ï¿½ï¿½,Psychic,,Genetic Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,106,110,90,154,90,130,1
+151,Mew,ï¿½ï¿½,Psychic,,New Species Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,100,100,100,100,100,100,1
+152,Chikorita,Ä¡ï¿½Ú¸ï¿½Å¸,Grass,,Leaf Pok?mon,ï¿½Ù»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,45,49,65,49,65,45,2
+155,Cyndaquil,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Fire,,Fire Mouse Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,39,52,43,60,50,65,2
+158,Totodile,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Water,,Big Jaw Pok?mon,Å«ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,50,65,64,44,48,43,2
+196,Espeon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Psychic,,Sun Pok?mon,ï¿½Â¾ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,65,65,60,130,95,110,2
+197,Umbreon,ï¿½ï¿½Å°,Dark,,Moon Pok?mon,ï¿½Þºï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,95,65,110,60,130,65,2
+212,Scizor,ï¿½Ö»ï¿½,Bug,Steel,Pincer Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Technician,ï¿½ï¿½Å©ï¿½Ï¼ï¿½,70,130,100,55,80,65,2
+214,Heracross,ï¿½ï¿½ï¿½Å©ï¿½Î½ï¿½,Bug,Fighting,Single Horn Pok?mon,ï¿½Ü»ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Guts,ï¿½Ù¼ï¿½,80,125,75,40,95,85,2
+248,Tyranitar,ï¿½ï¿½ï¿½ï¿½ï¿½,Rock,Dark,Armor Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Sand Stream,ï¿½ð·¡³ï¿½ï¿½ï¿½,100,134,110,95,100,61,2
+249,Lugia,ï¿½ï¿½ï¿½ï¿½,Psychic,Flying,Diving Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,106,90,130,90,154,110,2
+250,Ho-Oh,Ä¥ï¿½ï¿½ï¿½ï¿½,Fire,Flying,Rainbow Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,106,130,90,110,154,90,2
+251,Celebi,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Psychic,Grass,Time Travel Pok?mon,ï¿½Ã°ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Natural Cure,ï¿½Ú¿ï¿½È¸ï¿½ï¿½,100,100,100,100,100,100,2
+252,Treecko,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Grass,,Wood Gecko Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,40,45,35,65,55,70,3
+255,Torchic,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Fire,,Chick Pok?mon,ï¿½ï¿½ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,45,60,40,70,50,45,3
+258,Mudkip,ï¿½ï¿½Â¯ï¿½ï¿½,Water,,Mud Fish Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,50,70,50,50,50,40,3
+282,Gardevoir,ï¿½ï¿½ï¿½ï¿½ï¿½,Psychic,Fairy,Embrace Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Synchronize,ï¿½ï¿½Å©ï¿½ï¿½,68,65,65,125,115,80,3
+373,Salamence,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Dragon,Flying,Dragon Pok?mon,ï¿½å·¡ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Intimidate,ï¿½ï¿½ï¿½ï¿½,95,135,80,110,80,100,3
+376,Metagross,ï¿½ï¿½Å¸ï¿½×·Î½ï¿½,Steel,Psychic,Iron Leg Pok?mon,ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Clear Body,Å¬ï¿½ï¿½ï¿½ï¿½Ùµï¿½,80,135,130,95,90,70,3
+382,Kyogre,ï¿½ï¿½ï¿½Ì¿ï¿½ï¿½ï¿½,Water,,Sea Basin Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Drizzle,ï¿½Üºï¿½,100,100,90,150,140,90,3
+383,Groudon,ï¿½×¶ï¿½ï¿½ï¿½,Ground,,Continent Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Drought,ï¿½ï¿½ï¿½ï¿½,100,150,140,100,90,90,3
+384,Rayquaza,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Dragon,Flying,Sky High Pok?mon,Ãµï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Air Lock,ï¿½ï¿½ï¿½ï¿½ï¿½,105,150,90,150,90,95,3
+387,Turtwig,ï¿½ï¿½Î±ï¿½,Grass,,Tiny Turtle Pok?mon,ï¿½Æ±ï¿½Åºï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,55,68,64,45,55,31,4
+390,Chimchar,ï¿½Ò²É¼ï¿½ï¿½ï¿½,Fire,,Chimp Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,44,58,44,58,44,61,4
+393,Piplup,ï¿½Øµï¿½ï¿½ï¿½,Water,,Penguin Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,53,51,53,61,56,40,4
+445,Garchomp,ï¿½ï¿½Ä«ï¿½ï¿½ï¿½Æ½ï¿½,Dragon,Ground,Mach Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Sand Veil,ï¿½ð·¡¼ï¿½ï¿½ï¿½,108,130,95,80,85,102,4
+448,Lucario,ï¿½ï¿½Ä«ï¿½ï¿½ï¿½ï¿½,Fighting,Steel,Aura Pok?mon,ï¿½Äµï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Inner Focus,ï¿½ï¿½ï¿½Å·ï¿½,70,110,70,115,70,90,4
+483,Dialga,ï¿½ï¿½Æ·ç°¡,Steel,Dragon,Temporal Pok?mon,ï¿½Ã°ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,100,120,120,150,100,90,4
+484,Palkia,ï¿½Þ±ï¿½ï¿½,Water,Dragon,Spatial Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,90,120,100,150,120,100,4
+487,Giratina,ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½,Ghost,Dragon,Renegade Pok?mon,ï¿½Ý°ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,150,100,120,100,120,90,4
+493,Arceus,ï¿½Æ¸ï¿½ï¿½ï¿½ï¿½ì½º,Normal,,Alpha Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Multitype,ï¿½ï¿½Æ¼Å¸ï¿½ï¿½,120,120,120,120,120,120,4
+494,Victini,ï¿½ï¿½Å©Æ¼ï¿½ï¿½,Psychic,Fire,Victory Pok?mon,ï¿½Â¸ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Victory Star,ï¿½Â¸ï¿½ï¿½Ç½ï¿½Å¸,100,100,100,100,100,100,5
+495,Snivy,ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½,Grass,,Grass Snake Pok?mon,Ç®ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,45,45,55,45,55,63,5
+498,Tepig,ï¿½Ñ²Ù¸ï¿½,Fire,,Fire Pig Pok?mon,ï¿½Ò²Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,65,63,45,45,45,45,5
+501,Oshawott,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Water,,Sea Otter Pok?mon,ï¿½Ø´ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,55,55,45,63,45,45,5
+571,Zoroark,ï¿½ï¿½ï¿½Î¾ï¿½Å©,Dark,,Illusion Fox Pok?mon,È¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Illusion,ï¿½Ï·ï¿½ï¿½ï¿½,60,105,60,120,60,105,5
+635,Hydreigon,ï¿½ï¿½ï¿½ï¿½ï¿½,Dark,Dragon,Brutal Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Levitate,ï¿½ï¿½ï¿½ï¿½,92,105,90,125,90,98,5
+643,Reshiram,ï¿½ï¿½ï¿½Ã¶ï¿½,Dragon,Fire,Vast White Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Turboblaze,ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,100,120,100,150,120,90,5
+644,Zekrom,ï¿½ï¿½Å©ï¿½Î¹ï¿½,Dragon,Electric,Deep Black Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Teravolt,ï¿½×¶ï¿½Æ¼ï¿½ï¿½,100,150,120,120,100,90,5
+646,Kyurem,Å¥ï¿½ï¿½ï¿½ï¿½,Dragon,Ice,Boundary Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,125,130,90,130,90,95,5
+650,Chespin,ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½,Grass,,Spiny Nut Pok?mon,ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,56,61,65,48,45,38,6
+653,Fennekin,ÇªÈ£ï¿½ï¿½,Fire,,Fox Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,40,45,40,62,60,60,6
+658,Greninja,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Water,Dark,Ninja Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,72,95,67,103,71,122,6
+700,Sylveon,ï¿½ï¿½ï¿½Ç¾ï¿½,Fairy,,Intertwining Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Cute Charm,ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹Ùµï¿½,95,65,65,110,130,60,6
+716,Xerneas,ï¿½ï¿½ï¿½ï¿½ï¿½×¾Æ½ï¿½,Fairy,,Life Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Fairy Aura,ï¿½ï¿½î¸®ï¿½ï¿½ï¿½ï¿½,126,131,95,131,98,99,6
+717,Yveltal,ï¿½Ìºï¿½Å¸ï¿½ï¿½,Dark,Flying,Destruction Pok?mon,ï¿½Ä±ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Dark Aura,ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½,126,131,95,131,98,99,6
+718,Zygarde,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Dragon,Ground,Order Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Aura Break,ï¿½ï¿½ï¿½ï¿½ê·¹ï¿½ï¿½Å©,108,100,121,81,95,95,6
+722,Rowlet,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Grass,Flying,Grass Quill Pok?mon,Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,68,55,55,50,50,42,7
+725,Litten,ï¿½Ä¿ï¿½ï¿½ï¿½,Fire,,Fire Cat Pok?mon,ï¿½Ò²É°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,45,65,40,60,40,70,7
+728,Popplio,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Water,,Sea Lion Pok?mon,ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,50,54,54,66,56,40,7
+778,Mimikyu,ï¿½ï¿½ï¿½ï¿½Å¥,Ghost,Fairy,Disguise Pok?mon,Å»ï¿½ï¿½ï¿½Ï¸ï¿½,Disguise,Å»,55,90,80,50,105,96,7
+791,Solgaleo,ï¿½Ö°ï¿½ï¿½ï¿½ï¿½ï¿½,Psychic,Steel,Sunne Pok?mon,ï¿½Â¾ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Full Metal Body,ï¿½ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®,137,137,107,113,89,97,7
+792,Lunala,ï¿½ç³ªï¿½Æ¶ï¿½,Psychic,Ghost,Moone Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Shadow Shield,ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ï¿½ï¿½,137,113,89,137,107,97,7
+800,Necrozma,ï¿½ï¿½Å©ï¿½ï¿½ï¿½î¸¶,Psychic,,Prism Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Prism Armor,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¸ï¿½,97,107,109,127,89,79,7
+810,Grookey,ï¿½ï³ªï¿½ï¿½,Grass,,Chimp Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,50,65,50,40,40,65,8
+813,Scorbunny,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Fire,,Rabbit Pok?mon,ï¿½ä³¢ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,50,71,40,40,40,69,8
+816,Sobble,ï¿½ï¿½Ó±ï¿½,Water,,Water Lizard Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,50,40,40,70,40,70,8
+823,Corviknight,ï¿½Æ¸Ó±ï¿½ï¿½,Flying,Steel,Raven Pok?mon,ï¿½î¸¶ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,98,87,105,53,85,67,8
+888,Zacian,ï¿½Ú½Ã¾ï¿½,Fairy,Steel,Warrior Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Intrepid Sword,ï¿½Ò±ï¿½ï¿½Ç°ï¿½,92,130,115,80,115,138,8
+889,Zamazenta,ï¿½Ú¸ï¿½ï¿½ï¿½Å¸,Fighting,Steel,Warrior Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Dauntless Shield,ï¿½Ò±ï¿½ï¿½Ç¹ï¿½ï¿½ï¿½,92,130,115,80,115,138,8
+890,Eternatus,ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½Ì³ï¿½,Poison,Dragon,Gigantic Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Pressure,ï¿½Ð¹Ú°ï¿½,140,85,95,145,95,130,8
+906,Sprigatito,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Grass,,Grass Cat Pok?mon,Ç®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Overgrow,ï¿½É·ï¿½,40,61,54,45,45,65,9
+909,Fuecoco,ï¿½ß¾Æ°ï¿½,Fire,,Fire Croc Pok?mon,ï¿½Ò²É¾Ç¾ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Blaze,ï¿½ï¿½È­,67,45,59,63,40,36,9
+912,Quaxly,ï¿½Ù²Ù¾ï¿½,Water,,Duckling Pok?mon,ï¿½Æ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Torrent,ï¿½Þ·ï¿½,55,65,45,50,45,50,9
+959,Tinkaton,ï¿½Îµï¿½Â¯ï¿½ï¿½ï¿½ï¿½,Fairy,Steel,Hammer Pok?mon,ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½Ï¸ï¿½,Mold Breaker,Æ²ï¿½ï¿½ï¿½ï¿½,85,75,77,70,105,94,9
+1007,Koraidon,ï¿½Ú¶ï¿½ï¿½Ìµï¿½,Fighting,Dragon,Paradox Pok?mon,ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Orichalcum Pulse,ï¿½ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½,100,135,115,85,100,135,9
+1008,Miraidon,ï¿½Ì¶ï¿½ï¿½Ìµï¿½,Electric,Dragon,Paradox Pok?mon,ï¿½Ð·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Hadron Engine,ï¿½Ïµï¿½Ð¿ï¿½ï¿½ï¿½,100,85,100,135,115,135,9
+1025,Pecharunt,ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½,Poison,Ghost,Subjugation Pok?mon,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½,Poison Puppeteer,ï¿½ï¿½ï¿½ç½½,88,88,160,88,88,88,9
